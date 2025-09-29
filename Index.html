@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musicharmonic - Música que Encanta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --azul-principal: #1a365d;
+            --azul-secundario: #2d4a8a;
+            --dourado: #d4af37;
+            --dourado-claro: #f4e4a9;
+            --branco: #ffffff;
+            --cinza-claro: #f5f5f5;
+            --cinza: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--cinza-claro);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--azul-principal), var(--azul-secundario));
+            color: var(--branco);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(212,175,55,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .logo {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo i {
+            color: var(--dourado);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .slogan {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Seções */
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--azul-principal);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--dourado);
+            margin: 10px auto;
+        }
+        
+        .card {
+            background-color: var(--branco);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            color: var(--azul-principal);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card h3 i {
+            margin-right: 10px;
+            color: var(--dourado);
+        }
+        
+        /* Missão, Visão, Valores */
+        .mvvm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        /* Contato */
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background-color: var(--branco);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-item.instagram:hover {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+        }
+        
+        .contact-item.whatsapp:hover {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--azul-principal);
+            color: var(--branco);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--cinza);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .slogan {
+                font-size: 1.1rem;
+            }
+            
+            .mvvm-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-item {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-music"></i>
+            </div>
+            <h1>Musicharmonic</h1>
+            <p class="slogan">Música que Encanta, Harmonia que Conecta</p>
+        </div>
+    </header>
+
+    <!-- Seção Sobre -->
+    <section id="sobre">
+        <div class="container">
+            <h2 class="section-title">Sobre a Musicharmonic</h2>
+            <div class="card">
+                <p>Fundada por <strong>Marcos Vinios</strong>, a Musicharmonic é uma empresa dedicada a criar experiências musicais únicas e harmoniosas. Combinamos paixão pela música com expertise técnica para oferecer serviços que encantam e inspiram.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Missão, Visão, Valores e Objetivos -->
+    <section id="mvvm">
+        <div class="container">
+            <h2 class="section-title">Nossa Essência</h2>
+            <div class="mvvm-grid">
+                <div class="card">
+                    <h3><i class="fas fa-bullseye"></i> Missão</h3>
+                    <p>Oferecer experiências musicais excepcionais que encantam, inspiram e conectam pessoas através da harmonia e da emoção que apenas a música pode proporcionar.</p>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-eye"></i> Visão</h3>
+                    <p>Ser referência nacional em excelência musical, reconhecida pela qualidade, inovação e capacidade de criar momentos inesquecíveis através da música.</p>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-gem"></i> Valores</h3>
+                    <ul>
+                        <li>Excelência musical e técnica</li>
+                        <li>Paixão pela arte e pela música</li>
+                        <li>Inovação e criatividade</li>
+                        <li>Compromisso com a satisfação do cliente</li>
+                        <li>Integridade e profissionalismo</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-flag"></i> Objetivos</h3>
+                    <ul>
+                        <li>Expandir nossa presença no mercado musical</li>
+                        <li>Desenvolver projetos inovadores que unam música e tecnologia</li>
+                        <li>Estabelecer parcerias com artistas e instituições culturais</li>
+                        <li>Promover a educação musical através de workshops e eventos</li>
+                        <li>Criar uma comunidade engajada em torno da música de qualidade</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contato">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-info">
+                <a href="https://www.instagram.com/musicharmonic" target="_blank" class="contact-item instagram">
+                    <div class="contact-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Instagram</h3>
+                        <p>@musicharmonic</p>
+                    </div>
+                </a>
+                
+                <a href="https://wa.me/5511999999999" target="_blank" class="contact-item whatsapp">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>WhatsApp</h3>
+                        <p>(11) 99999-9999</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-music"></i> Musicharmonic
+                </div>
+                <p>Música que Encanta, Harmonia que Conecta</p>
+                <p class="copyright">&copy; 2023 Musicharmonic. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
