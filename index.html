@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espaço Musical Harmônico - Música é para todos!</title>
+    <title>Espaço Musical Harmônico - Sistema Completo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -14,6 +14,8 @@
             --branco: #ffffff;
             --cinza-claro: #f5f5f5;
             --cinza: #e0e0e0;
+            --verde: #28a745;
+            --vermelho: #dc3545;
         }
         
         * {
@@ -35,7 +37,16 @@
             padding: 0 20px;
         }
         
-        /* Header */
+        /* ========== LAYOUT PRINCIPAL ========== */
+        #sitePrincipal {
+            display: block;
+        }
+        
+        #sistemaLogin, #sistemaPrincipal {
+            display: none;
+        }
+        
+        /* ========== HEADER SITE ========== */
         header {
             background: linear-gradient(135deg, var(--azul-principal), var(--azul-secundario));
             color: var(--branco);
@@ -81,8 +92,62 @@
             position: relative;
             z-index: 1;
         }
-        
-        /* Seções */
+
+        /* ========== NAVEGAÇÃO ========== */
+        nav {
+            background-color: var(--azul-principal);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: var(--branco);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--branco);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--dourado);
+        }
+
+        .login-btn {
+            background-color: var(--dourado);
+            color: var(--azul-principal);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .login-btn:hover {
+            background-color: var(--dourado-claro);
+        }
+
+        /* ========== SEÇÕES DO SITE ========== */
         section {
             padding: 60px 0;
         }
@@ -129,109 +194,340 @@
             color: var(--dourado);
         }
         
-        /* Missão, Visão, Valores */
-        .mvvm-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        /* ========== SISTEMA DE LOGIN ========== */
+        #sistemaLogin {
+            background: linear-gradient(135deg, var(--azul-principal), var(--azul-secundario));
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
-        
-        /* Serviços */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .service-card {
+
+        .login-container {
             background-color: var(--branco);
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+        }
+        
+        .login-header {
+            background: linear-gradient(135deg, var(--azul-principal), var(--azul-secundario));
+            color: var(--branco);
+            padding: 40px 30px;
             text-align: center;
-            transition: transform 0.3s ease;
-            border-top: 4px solid var(--dourado);
+            position: relative;
         }
         
-        .service-card:hover {
-            transform: translateY(-5px);
+        .login-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(212,175,55,0.1)"/></svg>');
+            background-size: cover;
         }
         
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--dourado);
+        .login-body {
+            padding: 40px 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--azul-principal);
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--cinza);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--dourado);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--dourado), var(--dourado-claro));
+            color: var(--azul-principal);
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
             margin-bottom: 20px;
         }
         
-        /* Contato */
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 40px;
+        .submit-btn:hover {
+            transform: translateY(-2px);
         }
         
-        .contact-item {
+        .user-type-selector {
             display: flex;
-            align-items: center;
-            background-color: var(--branco);
-            padding: 20px;
+            margin-bottom: 25px;
             border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            width: 100%;
-            max-width: 350px;
+            overflow: hidden;
+            border: 2px solid var(--cinza);
         }
         
-        .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        .user-type {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            background-color: var(--branco);
+            cursor: pointer;
+            transition: all 0.3s;
         }
         
-        .contact-icon {
-            font-size: 2rem;
-            margin-right: 15px;
-            color: var(--dourado);
-        }
-        
-        .contact-details h3 {
-            margin-bottom: 5px;
-            color: var(--azul-principal);
-        }
-        
-        .contact-details p {
-            color: #666;
-        }
-        
-        /* Footer */
-        footer {
+        .user-type.active {
             background-color: var(--azul-principal);
             color: var(--branco);
-            padding: 30px 0;
+        }
+        
+        .back-to-site {
+            display: block;
             text-align: center;
+            margin-top: 20px;
+            color: var(--azul-secundario);
+            text-decoration: none;
         }
         
-        .footer-content {
+        .back-to-site:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== SISTEMA PRINCIPAL ========== */
+        .system-header {
+            background: linear-gradient(135deg, var(--azul-principal), var(--azul-secundario));
+            color: var(--branco);
+            padding: 20px 0;
+        }
+        
+        .user-info {
+            color: var(--dourado);
             display: flex;
-            flex-direction: column;
             align-items: center;
+            gap: 15px;
         }
         
-        .footer-logo {
-            font-size: 2rem;
+        .logout-btn {
+            background: none;
+            border: 1px solid var(--dourado);
+            color: var(--dourado);
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* ========== PAINEL ADMINISTRATIVO ========== */
+        .admin-panel {
+            background-color: var(--azul-principal);
+            color: var(--branco);
+            padding: 15px 0;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .admin-tab {
+            background-color: var(--azul-secundario);
+            color: var(--branco);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .admin-tab.active {
+            background-color: var(--dourado);
+            color: var(--azul-principal);
+        }
+
+        .admin-content {
+            display: none;
+            background-color: var(--branco);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .admin-content.active {
+            display: block;
+        }
+
+        /* ========== TABELAS ========== */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--cinza);
+        }
+
+        th {
+            background-color: var(--azul-principal);
+            color: var(--branco);
+        }
+
+        tr:hover {
+            background-color: var(--cinza-claro);
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            margin: 0 2px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .edit-btn {
+            background-color: var(--dourado);
+            color: var(--azul-principal);
+        }
+
+        .delete-btn {
+            background-color: var(--vermelho);
+            color: var(--branco);
+        }
+
+        .add-btn {
+            background-color: var(--verde);
+            color: var(--branco);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
             margin-bottom: 15px;
         }
-        
-        .copyright {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: var(--cinza);
+
+        /* ========== PAINEL DO ALUNO ========== */
+        .student-panel, .teacher-panel {
+            padding: 20px;
         }
-        
-        /* Responsividade */
+
+        .grades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .grade-card {
+            background-color: var(--branco);
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 4px solid var(--dourado);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* ========== SISTEMA DE CHAT ========== */
+        .chat-container {
+            display: flex;
+            height: 400px;
+            border: 1px solid var(--cinza);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .chat-users {
+            width: 250px;
+            background-color: var(--azul-principal);
+            color: var(--branco);
+            overflow-y: auto;
+        }
+
+        .chat-user {
+            padding: 15px;
+            border-bottom: 1px solid var(--azul-secundario);
+            cursor: pointer;
+        }
+
+        .chat-user.active {
+            background-color: var(--dourado);
+            color: var(--azul-principal);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: var(--cinza-claro);
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 70%;
+        }
+
+        .message.sent {
+            background-color: var(--dourado);
+            margin-left: auto;
+        }
+
+        .message.received {
+            background-color: var(--branco);
+            border: 1px solid var(--cinza);
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background-color: var(--branco);
+            border-top: 1px solid var(--cinza);
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--cinza);
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
         @media (max-width: 768px) {
             .logo {
                 font-size: 2.5rem;
@@ -245,164 +541,946 @@
                 font-size: 1.1rem;
             }
             
-            .mvvm-grid, .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-info {
+            .nav-container {
                 flex-direction: column;
-                align-items: center;
+                gap: 15px;
             }
-            
-            .contact-item {
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .admin-tabs {
+                flex-direction: column;
+            }
+
+            .chat-container {
+                flex-direction: column;
+                height: 500px;
+            }
+
+            .chat-users {
                 width: 100%;
-                max-width: 300px;
+                height: 150px;
+            }
+
+            .user-type-selector {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Cabeçalho -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <i class="fas fa-music"></i>
+    <!-- ========== SITE PRINCIPAL ========== -->
+    <div id="sitePrincipal">
+        <!-- Cabeçalho -->
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-music"></i>
+                </div>
+                <h1>Espaço Musical Harmônico</h1>
+                <p class="slogan">Música é para todos!</p>
             </div>
-            <h1>Espaço Musical Harmônico</h1>
-            <p class="slogan">Música é para todos!</p>
-        </div>
-    </header>
+        </header>
 
-    <!-- Seção Sobre -->
-    <section id="sobre">
-        <div class="container">
-            <h2 class="section-title">Sobre Nós</h2>
-            <div class="card">
-                <p>O <strong>Espaço Musical Harmônico</strong> é uma empresa dedicada a oferecer uma educação musical acessível e de alta qualidade, juntamente com serviços de musicoterapia e a venda de instrumentos musicais.</p>
-                <p>Nossa missão é inspirar e apoiar indivíduos em todas as fases da vida, promovendo o bem-estar emocional e mental através da música.</p>
+        <!-- Navegação -->
+        <nav>
+            <div class="container nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-music"></i> Espaço Musical
+                </div>
+                <div class="nav-links">
+                    <a href="#sobre">Sobre</a>
+                    <a href="#servicos">Serviços</a>
+                    <a href="#contato">Contato</a>
+                </div>
+                <button class="login-btn" onclick="mostrarSistemaLogin()">
+                    <i class="fas fa-sign-in-alt"></i> Acessar Sistema
+                </button>
             </div>
-        </div>
-    </section>
+        </nav>
 
-    <!-- Seção Missão, Visão, Valores -->
-    <section id="mvvm">
-        <div class="container">
-            <h2 class="section-title">Nossa Essência</h2>
-            <div class="mvvm-grid">
+        <!-- Seção Sobre -->
+        <section id="sobre">
+            <div class="container">
+                <h2 class="section-title">Sobre Nós</h2>
                 <div class="card">
-                    <h3><i class="fas fa-eye"></i> Visão</h3>
-                    <p>Ser referência nacional em educação musical, musicoterapia e na oferta de instrumentos de alta qualidade.</p>
-                    <p>Transformar vidas através do poder da música, promovendo o bem-estar de nossos clientes.</p>
-                </div>
-                
-                <div class="card">
-                    <h3><i class="fas fa-bullseye"></i> Missão</h3>
-                    <p>Oferecer uma educação musical acessível e de alta qualidade.</p>
-                    <p>Promover saúde emocional e mental através da musicoterapia.</p>
-                    <p>Nutrir a paixão pela música, contribuindo para o bem-estar e realização pessoal de nossos clientes.</p>
-                </div>
-                
-                <div class="card">
-                    <h3><i class="fas fa-gem"></i> Valores</h3>
-                    <ul>
-                        <li><strong>Excelência:</strong> Qualidade em todos os serviços e produtos.</li>
-                        <li><strong>Inovação:</strong> Criatividade e busca por novas abordagens.</li>
-                        <li><strong>Empatia:</strong> Atendimento personalizado e focado no bem-estar.</li>
-                        <li><strong>Paixão pela Música:</strong> Dedicação ao poder transformador da música.</li>
-                        <li><strong>Integridade:</strong> Transparência, ética e respeito nos negócios.</li>
-                    </ul>
+                    <p>O <strong>Espaço Musical Harmônico</strong> é uma empresa dedicada a oferecer uma educação musical acessível e de alta qualidade, juntamente com serviços de musicoterapia e a venda de instrumentos musicais.</p>
+                    <p>Nossa missão é inspirar e apoiar indivíduos em todas as fases da vida, promovendo o bem-estar emocional e mental através da música.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Seção Serviços -->
-    <section id="servicos">
-        <div class="container">
-            <h2 class="section-title">Serviços Oferecidos</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-guitar"></i>
+        <!-- Seção Missão, Visão, Valores -->
+        <section id="mvvm">
+            <div class="container">
+                <h2 class="section-title">Nossa Essência</h2>
+                <div class="mvvm-grid">
+                    <div class="card">
+                        <h3><i class="fas fa-eye"></i> Visão</h3>
+                        <p>Ser referência nacional em educação musical, musicoterapia e na oferta de instrumentos de alta qualidade.</p>
+                        <p>Transformar vidas através do poder da música, promovendo o bem-estar de nossos clientes.</p>
                     </div>
-                    <h3>Aulas de Música</h3>
-                    <p>Para todas as idades e níveis de habilidade. Desenvolvemos seu potencial musical com metodologia personalizada.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-heart"></i>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-bullseye"></i> Missão</h3>
+                        <p>Oferecer uma educação musical acessível e de alta qualidade.</p>
+                        <p>Promover saúde emocional e mental através da musicoterapia.</p>
+                        <p>Nutrir a paixão pela música, contribuindo para o bem-estar e realização pessoal de nossos clientes.</p>
                     </div>
-                    <h3>Musicoterapia</h3>
-                    <p>Tratamentos para promover o bem-estar emocional e mental através do poder transformador da música.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shopping-cart"></i>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-gem"></i> Valores</h3>
+                        <ul>
+                            <li><strong>Excelência:</strong> Qualidade em todos os serviços e produtos.</li>
+                            <li><strong>Inovação:</strong> Criatividade e busca por novas abordagens.</li>
+                            <li><strong>Empatia:</strong> Atendimento personalizado e focado no bem-estar.</li>
+                            <li><strong>Paixão pela Música:</strong> Dedicação ao poder transformador da música.</li>
+                            <li><strong>Integridade:</strong> Transparência, ética e respeito nos negócios.</li>
+                        </ul>
                     </div>
-                    <h3>Venda de Instrumentos</h3>
-                    <p>Produtos de alta qualidade para músicos de todos os níveis. Encontre o instrumento perfeito para você.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Seção Contato -->
-    <section id="contato">
-        <div class="container">
-            <h2 class="section-title">Entre em Contato</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
+        <!-- Seção Serviços -->
+        <section id="servicos">
+            <div class="container">
+                <h2 class="section-title">Serviços Oferecidos</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-guitar"></i>
+                        </div>
+                        <h3>Aulas de Música</h3>
+                        <p>Para todas as idades e níveis de habilidade. Desenvolvemos seu potencial musical com metodologia personalizada.</p>
                     </div>
-                    <div class="contact-details">
-                        <h3>Telefone</h3>
-                        <p>(38) 99833-5570 (Vivo)</p>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Musicoterapia</h3>
+                        <p>Tratamentos para promover o bem-estar emocional e mental através do poder transformador da música.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Venda de Instrumentos</h3>
+                        <p>Produtos de alta qualidade para músicos de todos os níveis. Encontre o instrumento perfeito para você.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Contato -->
+        <section id="contato">
+            <div class="container">
+                <h2 class="section-title">Entre em Contato</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Telefone</h3>
+                            <p>(38) 99833-5570 (Vivo)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>E-mail</h3>
+                            <p>musicharmonic2024@hotmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://instagram.com/musical_harmonico2025" target="_blank" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Instagram</h3>
+                            <p>@musical_harmonico2025</p>
+                        </div>
+                    </a>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Endereço</h3>
+                            <p>Rua Bocaíuva, nº 385 – Centro<br>Montes Claros – MG</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>E-mail</h3>
-                        <p>musicharmonic2024@hotmail.com</p>
-                    </div>
+                <div class="card" style="margin-top: 40px; text-align: center;">
+                    <h3><i class="fas fa-user"></i> Fundador</h3>
+                    <p><strong>Marcos Oliv</strong> - CEO Fundador</p>
+                    <p style="margin-top: 10px;">"Nosso compromisso é transformar vidas através da música, oferecendo experiências que harmonizam emoções e despertam talentos."</p>
                 </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+            </div>
+        </section>
+
+        <!-- Rodapé -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <i class="fas fa-music"></i> Espaço Musical Harmônico
                     </div>
-                    <div class="contact-details">
-                        <h3>Endereço</h3>
-                        <p>Rua Bocaíuva, nº 385 – Centro<br>Montes Claros – MG</p>
+                    <p>Música é para todos!</p>
+                    <div style="margin: 15px 0;">
+                        <a href="https://instagram.com/musical_harmonico2025" target="_blank" style="color: var(--dourado-claro); text-decoration: none; font-size: 1.2rem;">
+                            <i class="fab fa-instagram"></i> @musical_harmonico2025
+                        </a>
                     </div>
+                    <p class="copyright">&copy; 2024 Espaço Musical Harmônico. Todos os direitos reservados.</p>
                 </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ========== SISTEMA DE LOGIN ========== -->
+    <div id="sistemaLogin">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="logo">
+                    <i class="fas fa-music"></i>
+                </div>
+                <h1>Espaço Musical Harmônico</h1>
+                <p>Acesse o Sistema</p>
             </div>
             
-            <div class="card" style="margin-top: 40px; text-align: center;">
-                <h3><i class="fas fa-user"></i> Fundador</h3>
-                <p><strong>Marcos Oliv</strong> - CEO Fundador</p>
-                <p style="margin-top: 10px;">"Nosso compromisso é transformar vidas através da música, oferecendo experiências que harmonizam emoções e despertam talentos."</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Rodapé -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fas fa-music"></i> Espaço Musical Harmônico
+            <div class="login-body">
+                <div class="user-type-selector">
+                    <div class="user-type active" data-type="aluno">Aluno</div>
+                    <div class="user-type" data-type="professor">Professor</div>
+                    <div class="user-type" data-type="admin">Administrador</div>
                 </div>
-                <p>Música é para todos!</p>
-                <p class="copyright">&copy; 2024 Espaço Musical Harmônico. Todos os direitos reservados.</p>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginUsername"><i class="fas fa-user"></i> Usuário:</label>
+                        <input type="text" id="loginUsername" placeholder="Digite seu usuário" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword"><i class="fas fa-lock"></i> Senha:</label>
+                        <input type="password" id="loginPassword" placeholder="Digite sua senha" required>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-sign-in-alt"></i> Entrar no Sistema
+                    </button>
+                </form>
+
+                <a href="#" class="back-to-site" onclick="voltarParaSite()">
+                    <i class="fas fa-arrow-left"></i> Voltar para o Site
+                </a>
             </div>
         </div>
-    </footer>
+    </div>
+
+    <!-- ========== SISTEMA PRINCIPAL ========== -->
+    <div id="sistemaPrincipal">
+        <!-- Header do Sistema -->
+        <div class="system-header">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h2><i class="fas fa-music"></i> Sistema - Espaço Musical</h2>
+                        <div class="user-info">
+                            <span>Bem-vindo, <span id="userName">Usuário</span>!</span>
+                            <span id="userType">Tipo</span>
+                        </div>
+                    </div>
+                    <button class="logout-btn" onclick="fazerLogout()">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel do Administrador -->
+        <div id="adminPanel" class="admin-panel" style="display: none;">
+            <div class="container">
+                <div class="admin-header">
+                    <h3><i class="fas fa-crown"></i> Painel Administrativo</h3>
+                </div>
+                
+                <div class="admin-tabs">
+                    <button class="admin-tab active" onclick="abrirAbaAdmin('dashboard')">Dashboard</button>
+                    <button class="admin-tab" onclick="abrirAbaAdmin('alunos')">Gerenciar Alunos</button>
+                    <button class="admin-tab" onclick="abrirAbaAdmin('notas')">Lançar Notas</button>
+                    <button class="admin-tab" onclick="abrirAbaAdmin('chat')">Chat</button>
+                    <button class="admin-tab" onclick="abrirAbaAdmin('aulas')">Aulas Online</button>
+                </div>
+
+                <!-- Dashboard -->
+                <div id="dashboard" class="admin-content active">
+                    <h3>Dashboard do Sistema</h3>
+                    <div class="card">
+                        <h4>Resumo do Sistema</h4>
+                        <p>Total de Alunos: <span id="totalAlunos">0</span></p>
+                        <p>Total de Professores: <span id="totalProfessores">0</span></p>
+                        <p>Média Geral das Notas: <span id="mediaGeral">0</span></p>
+                    </div>
+                </div>
+
+                <!-- Gerenciar Alunos -->
+                <div id="alunos" class="admin-content">
+                    <h3>Gerenciar Alunos</h3>
+                    <button class="add-btn" onclick="abrirModalAluno()"><i class="fas fa-plus"></i> Adicionar Aluno</button>
+                    <div class="table-container">
+                        <table id="tabelaAlunos">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Usuário</th>
+                                    <th>CPF</th>
+                                    <th>Data Nasc.</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Lançar Notas -->
+                <div id="notas" class="admin-content">
+                    <h3>Lançar Notas</h3>
+                    <div class="card">
+                        <div class="form-group">
+                            <label for="selectAluno">Aluno:</label>
+                            <select id="selectAluno">
+                                <option value="">Selecione um aluno</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectDisciplina">Disciplina:</label>
+                            <select id="selectDisciplina">
+                                <option value="teoria_musical">Teoria Musical</option>
+                                <option value="pratica_instrumental">Prática Instrumental</option>
+                                <option value="historia_musica">História da Música</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="notaAluno">Nota (0-10):</label>
+                            <input type="number" id="notaAluno" min="0" max="10" step="0.1">
+                        </div>
+                        <button class="submit-btn" onclick="lancarNota()">Lançar Nota</button>
+                    </div>
+                    
+                    <h4>Notas Lançadas</h4>
+                    <div class="table-container">
+                        <table id="tabelaNotas">
+                            <thead>
+                                <tr>
+                                    <th>Aluno</th>
+                                    <th>Disciplina</th>
+                                    <th>Nota</th>
+                                    <th>Data</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Sistema de Chat -->
+                <div id="chat" class="admin-content">
+                    <h3>Sistema de Chat</h3>
+                    <div class="chat-container">
+                        <div class="chat-users" id="listaUsuariosChat">
+                            <div class="chat-user active" data-user="admin">Administrador</div>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column;">
+                            <div class="chat-messages" id="chatMessages">
+                                <div class="message received">
+                                    <strong>Sistema:</strong> Bem-vindo ao chat!
+                                </div>
+                            </div>
+                            <div class="chat-input">
+                                <input type="text" id="mensagemChat" placeholder="Digite sua mensagem...">
+                                <button class="submit-btn" onclick="enviarMensagem()">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aulas Online -->
+                <div id="aulas" class="admin-content">
+                    <h3>Aulas Online</h3>
+                    <div class="grades-grid">
+                        <div class="grade-card">
+                            <h4>Teoria Musical</h4>
+                            <p>Introdução à leitura de partituras e escalas musicais.</p>
+                            <button class="action-btn edit-btn" style="margin-top: 10px;">Acessar Aula</button>
+                        </div>
+                        <div class="grade-card">
+                            <h4>Prática Instrumental</h4>
+                            <p>Exercícios práticos para desenvolvimento técnico.</p>
+                            <button class="action-btn edit-btn" style="margin-top: 10px;">Acessar Aula</button>
+                        </div>
+                        <div class="grade-card">
+                            <h4>História da Música</h4>
+                            <p>Evolução musical através dos séculos.</p>
+                            <button class="action-btn edit-btn" style="margin-top: 10px;">Acessar Aula</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel do Aluno -->
+        <div id="studentPanel" class="student-panel" style="display: none;">
+            <div class="container">
+                <div class="card">
+                    <h2><i class="fas fa-user-graduate"></i> Painel do Aluno</h2>
+                    <p>Bem-vindo, <strong id="nomeAluno">Aluno</strong>!</p>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-book"></i> Minhas Aulas</h3>
+                    <div class="grades-grid" id="aulasAluno"></div>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-chart-line"></i> Minhas Notas</h3>
+                    <div id="notasAluno"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel do Professor -->
+        <div id="teacherPanel" class="teacher-panel" style="display: none;">
+            <div class="container">
+                <div class="card">
+                    <h2><i class="fas fa-chalkboard-teacher"></i> Painel do Professor</h2>
+                    <p>Bem-vindo, <strong id="nomeProfessor">Professor</strong>!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== DADOS INICIAIS ==========
+        const adminCredentials = {
+            username: 'marcos',
+            password: 'marcos3621'
+        };
+
+        const alunosIniciais = [
+            {
+                nome: "Carlos André da Silva Maia",
+                usuario: "carlos.andre",
+                senha: "0905",
+                cpf: "067.084.568-95",
+                nascimento: "2000-05-09",
+                endereco: "Rua das Flores, 123, São Paulo - SP",
+                tipo: "aluno"
+            },
+            {
+                nome: "Maria Clara dos Santos",
+                usuario: "maria.clara",
+                senha: "1234",
+                cpf: "123.456.789-00",
+                nascimento: "1995-08-15",
+                endereco: "Av. Brasil, 456, Rio de Janeiro - RJ",
+                tipo: "aluno"
+            },
+            {
+                nome: "João Pedro Oliveira",
+                usuario: "joao.pedro",
+                senha: "2021",
+                cpf: "987.654.321-00",
+                nascimento: "1990-11-22",
+                endereco: "Rua da Paz, 789, Belo Horizonte - MG",
+                tipo: "aluno"
+            },
+            {
+                nome: "Ana Beatriz Lima",
+                usuario: "ana.beatriz",
+                senha: "5678",
+                cpf: "321.654.987-00",
+                nascimento: "1988-01-30",
+                endereco: "Av. das Américas, 321, Curitiba - PR",
+                tipo: "aluno"
+            },
+            {
+                nome: "Lucas Gabriel Santos",
+                usuario: "lucas.gabriel",
+                senha: "0102",
+                cpf: "654.321.987-00",
+                nascimento: "1992-12-05",
+                endereco: "Rua do Sol, 159, Salvador - BA",
+                tipo: "aluno"
+            },
+            {
+                nome: "Juliana Ferreira",
+                usuario: "juliana.ferreira",
+                senha: "3456",
+                cpf: "456.789.123-00",
+                nascimento: "1993-07-18",
+                endereco: "Rua do Comércio, 654, Porto Alegre - RS",
+                tipo: "aluno"
+            },
+            {
+                nome: "Thiago Martins",
+                usuario: "thiago.martins",
+                senha: "9876",
+                cpf: "789.123.456-00",
+                nascimento: "1985-04-12",
+                endereco: "Av. Sete de Setembro, 852, Brasília - DF",
+                tipo: "aluno"
+            },
+            {
+                nome: "Fernanda Costa",
+                usuario: "fernanda.costa",
+                senha: "1357",
+                cpf: "159.753.486-00",
+                nascimento: "1991-09-25",
+                endereco: "Rua da Alegria, 456, Recife - PE",
+                tipo: "aluno"
+            },
+            {
+                nome: "André Luiz Ribeiro",
+                usuario: "andré.luiz",
+                senha: "2468",
+                cpf: "753.159.486-00",
+                nascimento: "1989-06-04",
+                endereco: "Rua do Futuro, 321, Fortaleza - CE",
+                tipo: "aluno"
+            },
+            {
+                nome: "Beatriz Gomes",
+                usuario: "beatriz.gomes",
+                senha: "7890",
+                cpf: "852.963.741-00",
+                nascimento: "1994-10-14",
+                endereco: "Av. da Liberdade, 987, Manaus - AM",
+                tipo: "aluno"
+            }
+        ];
+
+        // ========== INICIALIZAÇÃO ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar dados no localStorage
+            if (!localStorage.getItem('alunos')) {
+                localStorage.setItem('alunos', JSON.stringify(alunosIniciais));
+            }
+            if (!localStorage.getItem('notas')) {
+                localStorage.setItem('notas', JSON.stringify([]));
+            }
+            if (!localStorage.getItem('mensagens')) {
+                localStorage.setItem('mensagens', JSON.stringify([]));
+            }
+            if (!localStorage.getItem('professores')) {
+                localStorage.setItem('professores', JSON.stringify([]));
+            }
+
+            // Configurar seleção de tipo de usuário
+            document.querySelectorAll('.user-type').forEach(type => {
+                type.addEventListener('click', function() {
+                    document.querySelectorAll('.user-type').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Verificar se já está logado
+            const usuarioLogado = localStorage.getItem('usuarioLogado');
+            if (usuarioLogado) {
+                mostrarSistemaPrincipal(JSON.parse(usuarioLogado));
+            }
+        });
+
+        // ========== CONTROLE DE TELAS ==========
+        function mostrarSitePrincipal() {
+            document.getElementById('sitePrincipal').style.display = 'block';
+            document.getElementById('sistemaLogin').style.display = 'none';
+            document.getElementById('sistemaPrincipal').style.display = 'none';
+        }
+
+        function mostrarSistemaLogin() {
+            document.getElementById('sitePrincipal').style.display = 'none';
+            document.getElementById('sistemaLogin').style.display = 'flex';
+            document.getElementById('sistemaPrincipal').style.display = 'none';
+        }
+
+        function mostrarSistemaPrincipal(usuario) {
+            document.getElementById('sitePrincipal').style.display = 'none';
+            document.getElementById('sistemaLogin').style.display = 'none';
+            document.getElementById('sistemaPrincipal').style.display = 'block';
+
+            // Atualizar informações do usuário
+            document.getElementById('userName').textContent = usuario.nome;
+            document.getElementById('userType').textContent = usuario.tipo.charAt(0).toUpperCase() + usuario.tipo.slice(1);
+
+            // Mostrar painel correto
+            if (usuario.tipo === 'admin') {
+                document.getElementById('adminPanel').style.display = 'block';
+                document.getElementById('studentPanel').style.display = 'none';
+                document.getElementById('teacherPanel').style.display = 'none';
+                carregarDadosAdmin();
+            } else if (usuario.tipo === 'aluno') {
+                document.getElementById('adminPanel').style.display = 'none';
+                document.getElementById('studentPanel').style.display = 'block';
+                document.getElementById('teacherPanel').style.display = 'none';
+                document.getElementById('nomeAluno').textContent = usuario.nome;
+                carregarDadosAluno(usuario);
+            } else if (usuario.tipo === 'professor') {
+                document.getElementById('adminPanel').style.display = 'none';
+                document.getElementById('studentPanel').style.display = 'none';
+                document.getElementById('teacherPanel').style.display = 'block';
+                document.getElementById('nomeProfessor').textContent = usuario.nome;
+            }
+        }
+
+        function voltarParaSite() {
+            mostrarSitePrincipal();
+        }
+
+        function fazerLogout() {
+            localStorage.removeItem('usuarioLogado');
+            mostrarSitePrincipal();
+        }
+
+        // ========== SISTEMA DE LOGIN ==========
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const userType = document.querySelector('.user-type.active').dataset.type;
+            
+            // Verificar admin
+            if (userType === 'admin' && username === adminCredentials.username && password === adminCredentials.password) {
+                const usuario = {
+                    username: username,
+                    nome: 'Administrador',
+                    tipo: 'admin'
+                };
+                localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+                mostrarSistemaPrincipal(usuario);
+                return;
+            }
+            
+            // Verificar alunos
+            if (userType === 'aluno') {
+                const alunos = JSON.parse(localStorage.getItem('alunos') || '[]');
+                const aluno = alunos.find(a => a.usuario === username && a.senha === password);
+                
+                if (aluno) {
+                    const usuario = {
+                        username: aluno.usuario,
+                        nome: aluno.nome,
+                        tipo: 'aluno'
+                    };
+                    localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+                    mostrarSistemaPrincipal(usuario);
+                    return;
+                }
+            }
+            
+            // Verificar professores
+            if (userType === 'professor') {
+                const professores = JSON.parse(localStorage.getItem('professores') || '[]');
+                const professor = professores.find(p => p.usuario === username && p.senha === password);
+                
+                if (professor) {
+                    const usuario = {
+                        username: professor.usuario,
+                        nome: professor.nome,
+                        tipo: 'professor'
+                    };
+                    localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+                    mostrarSistemaPrincipal(usuario);
+                    return;
+                }
+            }
+            
+            alert('Usuário ou senha incorretos!');
+        });
+
+        // ========== SISTEMA ADMINISTRATIVO ==========
+        function abrirAbaAdmin(aba) {
+            // Esconder todas as abas
+            document.querySelectorAll('.admin-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remover active de todos os botões
+            document.querySelectorAll('.admin-tab').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Mostrar aba selecionada
+            document.getElementById(aba).classList.add('active');
+            
+            // Adicionar active ao botão clicado
+            event.target.classList.add('active');
+            
+            // Carregar dados específicos
+            if (aba === 'alunos') carregarAlunos();
+            if (aba === 'notas') {
+                carregarSelectAlunos();
+                carregarNotas();
+            }
+            if (aba === 'chat') carregarChat();
+        }
+
+        function carregarDadosAdmin() {
+            carregarAlunos();
+            carregarSelectAlunos();
+            carregarNotas();
+            atualizarDashboard();
+        }
+
+        function carregarAlunos() {
+            const alunos = JSON.parse(localStorage.getItem('alunos')) || [];
+            const tbody = document.querySelector('#tabelaAlunos tbody');
+            tbody.innerHTML = '';
+            
+            alunos.forEach((aluno, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${aluno.nome}</td>
+                    <td>${aluno.usuario}</td>
+                    <td>${aluno.cpf}</td>
+                    <td>${formatarData(aluno.nascimento)}</td>
+                    <td>
+                        <button class="action-btn delete-btn" onclick="excluirAluno(${index})">Excluir</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function carregarSelectAlunos() {
+            const alunos = JSON.parse(localStorage.getItem('alunos')) || [];
+            const select = document.getElementById('selectAluno');
+            select.innerHTML = '<option value="">Selecione um aluno</option>';
+            
+            alunos.forEach((aluno, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = aluno.nome;
+                select.appendChild(option);
+            });
+        }
+
+        function carregarNotas() {
+            const notas = JSON.parse(localStorage.getItem('notas')) || [];
+            const tbody = document.querySelector('#tabelaNotas tbody');
+            tbody.innerHTML = '';
+            
+            const alunos = JSON.parse(localStorage.getItem('alunos')) || [];
+            
+            notas.forEach((nota, index) => {
+                const aluno = alunos[nota.alunoIndex];
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${aluno ? aluno.nome : 'Aluno não encontrado'}</td>
+                    <td>${formatarDisciplina(nota.disciplina)}</td>
+                    <td>${nota.nota}</td>
+                    <td>${formatarData(nota.data)}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function lancarNota() {
+            const alunoIndex = document.getElementById('selectAluno').value;
+            const disciplina = document.getElementById('selectDisciplina').value;
+            const nota = document.getElementById('notaAluno').value;
+            
+            if (!alunoIndex || !nota) {
+                alert('Preencha todos os campos!');
+                return;
+            }
+            
+            const novaNota = {
+                alunoIndex: parseInt(alunoIndex),
+                disciplina: disciplina,
+                nota: parseFloat(nota),
+                data: new Date().toISOString()
+            };
+            
+            const notas = JSON.parse(localStorage.getItem('notas')) || [];
+            notas.push(novaNota);
+            localStorage.setItem('notas', JSON.stringify(notas));
+            
+            carregarNotas();
+            atualizarDashboard();
+            alert('Nota lançada com sucesso!');
+        }
+
+        function carregarChat() {
+            const alunos = JSON.parse(localStorage.getItem('alunos')) || [];
+            const listaUsuarios = document.getElementById('listaUsuariosChat');
+            listaUsuarios.innerHTML = '<div class="chat-user active" data-user="admin">Administrador</div>';
+            
+            alunos.forEach((aluno, index) => {
+                const userDiv = document.createElement('div');
+                userDiv.className = 'chat-user';
+                userDiv.setAttribute('data-user', `aluno_${index}`);
+                userDiv.textContent = aluno.nome;
+                userDiv.onclick = function() { selecionarUsuarioChat(`aluno_${index}`, aluno.nome); };
+                listaUsuarios.appendChild(userDiv);
+            });
+            
+            carregarMensagensChat();
+        }
+
+        function selecionarUsuarioChat(usuarioId, usuarioNome) {
+            document.querySelectorAll('.chat-user').forEach(user => {
+                user.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            localStorage.setItem('chatUsuarioSelecionado', usuarioId);
+            localStorage.setItem('chatUsuarioNome', usuarioNome);
+            carregarMensagensChat();
+        }
+
+        function carregarMensagensChat() {
+            const mensagens = JSON.parse(localStorage.getItem('mensagens')) || [];
+            const chatMessages = document.getElementById('chatMessages');
+            const usuarioSelecionado = localStorage.getItem('chatUsuarioSelecionado') || 'admin';
+            
+            chatMessages.innerHTML = '';
+            
+            const mensagensFiltradas = mensagens.filter(msg => 
+                msg.para === usuarioSelecionado || msg.de === usuarioSelecionado ||
+                msg.para === 'admin' || msg.de === 'admin'
+            );
+            
+            mensagensFiltradas.forEach(msg => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${msg.de === 'admin' ? 'sent' : 'received'}`;
+                messageDiv.innerHTML = `<strong>${msg.de === 'admin' ? 'Admin' : msg.deNome}:</strong> ${msg.texto}`;
+                chatMessages.appendChild(messageDiv);
+            });
+            
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function enviarMensagem() {
+            const input = document.getElementById('mensagemChat');
+            const texto = input.value.trim();
+            const usuarioSelecionado = localStorage.getItem('chatUsuarioSelecionado');
+            const usuarioNome = localStorage.getItem('chatUsuarioNome');
+            
+            if (!texto || !usuarioSelecionado) {
+                alert('Selecione um usuário e digite uma mensagem!');
+                return;
+            }
+            
+            const mensagem = {
+                de: 'admin',
+                deNome: 'Administrador',
+                para: usuarioSelecionado,
+                paraNome: usuarioNome,
+                texto: texto,
+                data: new Date().toISOString()
+            };
+            
+            const mensagens = JSON.parse(localStorage.getItem('mensagens')) || [];
+            mensagens.push(mensagem);
+            localStorage.setItem('mensagens', JSON.stringify(mensagens));
+            
+            input.value = '';
+            carregarMensagensChat();
+        }
+
+        function atualizarDashboard() {
+            const alunos = JSON.parse(localStorage.getItem('alunos')) || [];
+            const professores = JSON.parse(localStorage.getItem('professores')) || [];
+            const notas = JSON.parse(localStorage.getItem('notas')) || [];
+            
+            document.getElementById('totalAlunos').textContent = alunos.length;
+            document.getElementById('totalProfessores').textContent = professores.length;
+            
+            if (notas.length > 0) {
+                const media = notas.reduce((sum, nota) => sum + nota.nota, 0) / notas.length;
+                document.getElementById('mediaGeral').textContent = media.toFixed(1);
+            } else {
+                document.getElementById('mediaGeral').textContent = '0';
+            }
+        }
+
+        // ========== SISTEMA DO ALUNO ==========
+        function carregarDadosAluno(usuario) {
+            const notas = JSON.parse(localStorage.getItem('notas') || '[]');
+            const alunos = JSON.parse(localStorage.getItem('alunos') || '[]');
+            const alunoIndex = alunos.findIndex(a => a.usuario === usuario.username);
+            
+            const alunoNotas = notas.filter(nota => nota.alunoIndex === alunoIndex);
+            
+            // Exibir notas
+            const notasContainer = document.getElementById('notasAluno');
+            if (alunoNotas.length > 0) {
+                let html = '<table><thead><tr><th>Disciplina</th><th>Nota</th><th>Data</th></tr></thead><tbody>';
+                alunoNotas.forEach(nota => {
+                    html += `<tr>
+                        <td>${formatarDisciplina(nota.disciplina)}</td>
+                        <td>${nota.nota}</td>
+                        <td>${formatarData(nota.data)}</td>
+                    </tr>`;
+                });
+                html += '</tbody></table>';
+                notasContainer.innerHTML = html;
+            } else {
+                notasContainer.innerHTML = '<p>Nenhuma nota lançada ainda.</p>';
+            }
+            
+            // Carregar aulas
+            const aulasContainer = document.getElementById('aulasAluno');
+            aulasContainer.innerHTML = `
+                <div class="grade-card">
+                    <h4>Teoria Musical</h4>
+                    <p>Introdução à leitura de partituras</p>
+                </div>
+                <div class="grade-card">
+                    <h4>Prática Instrumental</h4>
+                    <p>Exercícios de técnica</p>
+                </div>
+            `;
+        }
+
+        // ========== FUNÇÕES AUXILIARES ==========
+        function formatarData(data) {
+            if (!data) return '';
+            const date = new Date(data);
+            return date.toLocaleDateString('pt-BR');
+        }
+
+        function formatarDisciplina(disciplina) {
+            const disciplinas = {
+                'teoria_musical': 'Teoria Musical',
+                'pratica_instrumental': 'Prática Instrumental',
+                'historia_musica': 'História da Música'
+            };
+            return disciplinas[disciplina] || disciplina;
+        }
+
+        function excluirAluno(index) {
+            if (confirm('Tem certeza que deseja excluir este aluno?')) {
+                const alunos = JSON.parse(localStorage.getItem('alunos')) || [];
+                alunos.splice(index, 1);
+                localStorage.setItem('alunos', JSON.stringify(alunos));
+                carregarAlunos();
+                atualizarDashboard();
+            }
+        }
+    </script>
 </body>
-    </html>
+</html>
