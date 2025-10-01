@@ -16,6 +16,7 @@
             --cinza: #e0e0e0;
             --verde: #28a745;
             --vermelho: #dc3545;
+            --rosa: #e91e63;
         }
         
         * {
@@ -194,6 +195,127 @@
             color: var(--dourado);
         }
         
+        /* ========== SISTEMA DE FEEDBACK ========== */
+        .feedback-section {
+            background: linear-gradient(135deg, var(--cinza-claro), var(--branco));
+            padding: 60px 0;
+        }
+
+        .feedback-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feedback-card {
+            background-color: var(--branco);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid var(--dourado);
+        }
+
+        .rating-stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .star {
+            font-size: 2rem;
+            color: var(--cinza);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .star.active {
+            color: var(--dourado);
+        }
+
+        .star:hover {
+            color: var(--dourado);
+        }
+
+        .feedback-list {
+            margin-top: 40px;
+        }
+
+        .feedback-item {
+            background-color: var(--branco);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--dourado);
+        }
+
+        .feedback-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .feedback-author {
+            font-weight: bold;
+            color: var(--azul-principal);
+        }
+
+        .feedback-date {
+            color: var(--cinza);
+            font-size: 0.9rem;
+        }
+
+        .feedback-rating {
+            color: var(--dourado);
+            margin: 5px 0;
+        }
+
+        .feedback-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .like-btn {
+            background: none;
+            border: none;
+            color: var(--cinza);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .like-btn.liked {
+            color: var(--rosa);
+        }
+
+        .like-btn:hover {
+            color: var(--rosa);
+        }
+
+        .like-count {
+            margin-left: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* ========== SISTEMA DE CADASTRO ========== */
+        .cadastro-section {
+            background: linear-gradient(135deg, var(--azul-principal), var(--azul-secundario));
+            padding: 60px 0;
+            color: var(--branco);
+        }
+
+        .cadastro-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: var(--branco);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            color: #333;
+        }
+
         /* ========== SISTEMA DE LOGIN ========== */
         #sistemaLogin {
             background: linear-gradient(135deg, var(--azul-principal), var(--azul-secundario));
@@ -209,7 +331,7 @@
             border-radius: 15px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 450px;
+            max-width: 500px;
             overflow: hidden;
         }
         
@@ -238,6 +360,7 @@
         
         .form-group {
             margin-bottom: 25px;
+            position: relative;
         }
         
         .form-group label {
@@ -247,7 +370,7 @@
             font-weight: 500;
         }
         
-        .form-group input, .form-group select {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 15px;
             border: 2px solid var(--cinza);
@@ -256,9 +379,20 @@
             transition: border-color 0.3s;
         }
         
-        .form-group input:focus, .form-group select:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             outline: none;
             border-color: var(--dourado);
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 40px;
+            background: none;
+            border: none;
+            color: var(--azul-principal);
+            cursor: pointer;
+            font-size: 1.1rem;
         }
         
         .submit-btn {
@@ -431,6 +565,11 @@
             color: var(--branco);
         }
 
+        .approve-btn {
+            background-color: var(--verde);
+            color: var(--branco);
+        }
+
         .add-btn {
             background-color: var(--verde);
             color: var(--branco);
@@ -567,6 +706,12 @@
             .user-type-selector {
                 flex-direction: column;
             }
+
+            .feedback-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -593,6 +738,8 @@
                 <div class="nav-links">
                     <a href="#sobre">Sobre</a>
                     <a href="#servicos">Serviços</a>
+                    <a href="#feedback">Feedback</a>
+                    <a href="#cadastro">Cadastre-se</a>
                     <a href="#contato">Contato</a>
                 </div>
                 <button class="login-btn" onclick="mostrarSistemaLogin()">
@@ -612,7 +759,98 @@
             </div>
         </section>
 
-        <!-- Seção Missão, Visão, Valores -->
+        <!-- Seção Feedback (AGORA ANTES DO CADASTRO) -->
+        <section id="feedback" class="feedback-section">
+            <div class="container">
+                <h2 class="section-title">Deixe seu Feedback</h2>
+                
+                <div class="feedback-form">
+                    <div class="feedback-card">
+                        <h3 style="text-align: center; margin-bottom: 20px;">Sua opinião é importante para nós!</h3>
+                        <form id="feedbackForm">
+                            <div class="form-group">
+                                <label for="feedbackNome">Seu Nome:</label>
+                                <input type="text" id="feedbackNome" placeholder="Como gostaria de ser chamado" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedbackEmail">Seu E-mail:</label>
+                                <input type="email" id="feedbackEmail" placeholder="seu@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Avaliação:</label>
+                                <div class="rating-stars">
+                                    <span class="star" data-rating="1">★</span>
+                                    <span class="star" data-rating="2">★</span>
+                                    <span class="star" data-rating="3">★</span>
+                                    <span class="star" data-rating="4">★</span>
+                                    <span class="star" data-rating="5">★</span>
+                                </div>
+                                <input type="hidden" id="feedbackRating" value="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedbackMensagem">Mensagem:</label>
+                                <textarea id="feedbackMensagem" rows="5" placeholder="Conte-nos sua experiência..." required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i> Enviar Feedback
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Lista de Feedbacks -->
+                <div class="feedback-list">
+                    <h3 style="text-align: center; margin-bottom: 30px;">O que nossos alunos dizem</h3>
+                    <div id="listaFeedbacks">
+                        <!-- Feedbacks serão carregados aqui -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Cadastro (DEPOIS DO FEEDBACK) -->
+        <section id="cadastro" class="cadastro-section">
+            <div class="container">
+                <h2 class="section-title" style="color: var(--branco);">Cadastre-se no Sistema</h2>
+                <div class="cadastro-container">
+                    <form id="cadastroForm">
+                        <div class="form-group">
+                            <label for="cadastroNome"><i class="fas fa-user"></i> Nome Completo:</label>
+                            <input type="text" id="cadastroNome" placeholder="Seu nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cadastroEmail"><i class="fas fa-envelope"></i> E-mail:</label>
+                            <input type="email" id="cadastroEmail" placeholder="seu@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cadastroUsuario"><i class="fas fa-user-tag"></i> Usuário:</label>
+                            <input type="text" id="cadastroUsuario" placeholder="Escolha um usuário" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cadastroSenha"><i class="fas fa-lock"></i> Senha:</label>
+                            <input type="password" id="cadastroSenha" placeholder="Mínimo 6 caracteres" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('cadastroSenha')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <label for="cadastroTipo">Tipo de Cadastro:</label>
+                            <select id="cadastroTipo" required>
+                                <option value="">Selecione...</option>
+                                <option value="aluno">Aluno</option>
+                                <option value="professor">Professor</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-user-plus"></i> Solicitar Cadastro
+                        </button>
+                    </form>
+                    <div id="cadastroMessage" style="text-align: center; margin-top: 15px; display: none;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resto das seções (Missão, Serviços, Contato) -->
         <section id="mvvm">
             <div class="container">
                 <h2 class="section-title">Nossa Essência</h2>
@@ -644,7 +882,6 @@
             </div>
         </section>
 
-        <!-- Seção Serviços -->
         <section id="servicos">
             <div class="container">
                 <h2 class="section-title">Serviços Oferecidos</h2>
@@ -676,7 +913,6 @@
             </div>
         </section>
 
-        <!-- Seção Contato -->
         <section id="contato">
             <div class="container">
                 <h2 class="section-title">Entre em Contato</h2>
@@ -775,6 +1011,9 @@
                     <div class="form-group">
                         <label for="loginPassword"><i class="fas fa-lock"></i> Senha:</label>
                         <input type="password" id="loginPassword" placeholder="Digite sua senha" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                            <i class="fas fa-eye"></i>
+                        </button>
                     </div>
                     <button type="submit" class="submit-btn">
                         <i class="fas fa-sign-in-alt"></i> Entrar no Sistema
@@ -818,7 +1057,9 @@
                 <div class="admin-tabs">
                     <button class="admin-tab active" onclick="abrirAbaAdmin('dashboard')">Dashboard</button>
                     <button class="admin-tab" onclick="abrirAbaAdmin('alunos')">Gerenciar Alunos</button>
+                    <button class="admin-tab" onclick="abrirAbaAdmin('cadastros')">Solicitações de Cadastro</button>
                     <button class="admin-tab" onclick="abrirAbaAdmin('notas')">Lançar Notas</button>
+                    <button class="admin-tab" onclick="abrirAbaAdmin('feedbacks')">Feedbacks</button>
                     <button class="admin-tab" onclick="abrirAbaAdmin('chat')">Chat</button>
                     <button class="admin-tab" onclick="abrirAbaAdmin('aulas')">Aulas Online</button>
                 </div>
@@ -830,6 +1071,8 @@
                         <h4>Resumo do Sistema</h4>
                         <p>Total de Alunos: <span id="totalAlunos">0</span></p>
                         <p>Total de Professores: <span id="totalProfessores">0</span></p>
+                        <p>Solicitações Pendentes: <span id="solicitacoesPendentes">0</span></p>
+                        <p>Feedbacks Recebidos: <span id="totalFeedbacks">0</span></p>
                         <p>Média Geral das Notas: <span id="mediaGeral">0</span></p>
                     </div>
                 </div>
@@ -846,6 +1089,26 @@
                                     <th>Usuário</th>
                                     <th>CPF</th>
                                     <th>Data Nasc.</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Solicitações de Cadastro -->
+                <div id="cadastros" class="admin-content">
+                    <h3>Solicitações de Cadastro Pendentes</h3>
+                    <div class="table-container">
+                        <table id="tabelaSolicitacoes">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>E-mail</th>
+                                    <th>Usuário</th>
+                                    <th>Tipo</th>
+                                    <th>Data</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
@@ -888,6 +1151,26 @@
                                     <th>Disciplina</th>
                                     <th>Nota</th>
                                     <th>Data</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Feedbacks -->
+                <div id="feedbacks" class="admin-content">
+                    <h3>Feedbacks Recebidos</h3>
+                    <div class="table-container">
+                        <table id="tabelaFeedbacks">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>E-mail</th>
+                                    <th>Avaliação</th>
+                                    <th>Mensagem</th>
+                                    <th>Data</th>
+                                    <th>Curtidas</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -986,7 +1269,8 @@
                 cpf: "067.084.568-95",
                 nascimento: "2000-05-09",
                 endereco: "Rua das Flores, 123, São Paulo - SP",
-                tipo: "aluno"
+                tipo: "aluno",
+                status: "aprovado"
             },
             {
                 nome: "Maria Clara dos Santos",
@@ -995,7 +1279,8 @@
                 cpf: "123.456.789-00",
                 nascimento: "1995-08-15",
                 endereco: "Av. Brasil, 456, Rio de Janeiro - RJ",
-                tipo: "aluno"
+                tipo: "aluno",
+                status: "aprovado"
             },
             {
                 nome: "João Pedro Oliveira",
@@ -1004,7 +1289,8 @@
                 cpf: "987.654.321-00",
                 nascimento: "1990-11-22",
                 endereco: "Rua da Paz, 789, Belo Horizonte - MG",
-                tipo: "aluno"
+                tipo: "aluno",
+                status: "aprovado"
             },
             {
                 nome: "Ana Beatriz Lima",
@@ -1013,7 +1299,8 @@
                 cpf: "321.654.987-00",
                 nascimento: "1988-01-30",
                 endereco: "Av. das Américas, 321, Curitiba - PR",
-                tipo: "aluno"
+                tipo: "aluno",
+                status: "aprovado"
             },
             {
                 nome: "Lucas Gabriel Santos",
@@ -1022,7 +1309,8 @@
                 cpf: "654.321.987-00",
                 nascimento: "1992-12-05",
                 endereco: "Rua do Sol, 159, Salvador - BA",
-                tipo: "aluno"
+                tipo: "aluno",
+                status: "aprovado"
             },
             {
                 nome: "Juliana Ferreira",
@@ -1031,7 +1319,8 @@
                 cpf: "456.789.123-00",
                 nascimento: "1993-07-18",
                 endereco: "Rua do Comércio, 654, Porto Alegre - RS",
-                tipo: "aluno"
+                tipo: "aluno",
+                status: "aprovado"
             },
             {
                 nome: "Thiago Martins",
@@ -1040,7 +1329,8 @@
                 cpf: "789.123.456-00",
                 nascimento: "1985-04-12",
                 endereco: "Av. Sete de Setembro, 852, Brasília - DF",
-                tipo: "aluno"
+                tipo: "aluno",
+                status: "aprovado"
             },
             {
                 nome: "Fernanda Costa",
@@ -1049,7 +1339,8 @@
                 cpf: "159.753.486-00",
                 nascimento: "1991-09-25",
                 endereco: "Rua da Alegria, 456, Recife - PE",
-                tipo: "aluno"
+                tipo: "aluno",
+                status: "aprovado"
             },
             {
                 nome: "André Luiz Ribeiro",
@@ -1058,7 +1349,8 @@
                 cpf: "753.159.486-00",
                 nascimento: "1989-06-04",
                 endereco: "Rua do Futuro, 321, Fortaleza - CE",
-                tipo: "aluno"
+                tipo: "aluno",
+                status: "aprovado"
             },
             {
                 nome: "Beatriz Gomes",
@@ -1067,13 +1359,14 @@
                 cpf: "852.963.741-00",
                 nascimento: "1994-10-14",
                 endereco: "Av. da Liberdade, 987, Manaus - AM",
-                tipo: "aluno"
+                tipo: "aluno",
+                status: "aprovado"
             }
         ];
 
         // ========== INICIALIZAÇÃO ==========
         document.addEventListener('DOMContentLoaded', function() {
-            // Inicializar dados no localStorage
+            // Inicializar dados
             if (!localStorage.getItem('alunos')) {
                 localStorage.setItem('alunos', JSON.stringify(alunosIniciais));
             }
@@ -1086,6 +1379,12 @@
             if (!localStorage.getItem('professores')) {
                 localStorage.setItem('professores', JSON.stringify([]));
             }
+            if (!localStorage.getItem('solicitacoesCadastro')) {
+                localStorage.setItem('solicitacoesCadastro', JSON.stringify([]));
+            }
+            if (!localStorage.getItem('feedbacks')) {
+                localStorage.setItem('feedbacks', JSON.stringify([]));
+            }
 
             // Configurar seleção de tipo de usuário
             document.querySelectorAll('.user-type').forEach(type => {
@@ -1095,12 +1394,322 @@
                 });
             });
 
+            // Configurar estrelas de avaliação
+            configurarEstrelasAvaliacao();
+
+            // Carregar feedbacks públicos
+            carregarFeedbacksPublicos();
+
             // Verificar se já está logado
             const usuarioLogado = localStorage.getItem('usuarioLogado');
             if (usuarioLogado) {
                 mostrarSistemaPrincipal(JSON.parse(usuarioLogado));
             }
+
+            // Configurar formulários
+            document.getElementById('cadastroForm').addEventListener('submit', solicitarCadastro);
+            document.getElementById('feedbackForm').addEventListener('submit', enviarFeedback);
         });
+
+        // ========== FUNÇÕES DE VISUALIZAÇÃO DE SENHA ==========
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const toggle = input.nextElementSibling;
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                toggle.innerHTML = '<i class="fas fa-eye-slash"></i>';
+            } else {
+                input.type = 'password';
+                toggle.innerHTML = '<i class="fas fa-eye"></i>';
+            }
+        }
+
+        // ========== SISTEMA DE CADASTRO ==========
+        function solicitarCadastro(e) {
+            e.preventDefault();
+            
+            const solicitacao = {
+                nome: document.getElementById('cadastroNome').value,
+                email: document.getElementById('cadastroEmail').value,
+                usuario: document.getElementById('cadastroUsuario').value,
+                senha: document.getElementById('cadastroSenha').value,
+                tipo: document.getElementById('cadastroTipo').value,
+                data: new Date().toISOString(),
+                status: 'pendente'
+            };
+
+            const solicitacoes = JSON.parse(localStorage.getItem('solicitacoesCadastro') || '[]');
+            
+            // Verificar se usuário já existe
+            const usuariosExistentes = [
+                ...JSON.parse(localStorage.getItem('alunos') || '[]'),
+                ...JSON.parse(localStorage.getItem('professores') || '[]')
+            ];
+            
+            if (usuariosExistentes.find(u => u.usuario === solicitacao.usuario)) {
+                mostrarMensagemCadastro('Este usuário já existe!', 'error');
+                return;
+            }
+
+            if (solicitacoes.find(s => s.usuario === solicitacao.usuario)) {
+                mostrarMensagemCadastro('Já existe uma solicitação para este usuário!', 'error');
+                return;
+            }
+
+            solicitacoes.push(solicitacao);
+            localStorage.setItem('solicitacoesCadastro', JSON.stringify(solicitacoes));
+            
+            mostrarMensagemCadastro('Solicitação enviada com sucesso! Aguarde a aprovação do administrador.', 'success');
+            document.getElementById('cadastroForm').reset();
+        }
+
+        function mostrarMensagemCadastro(mensagem, tipo) {
+            const div = document.getElementById('cadastroMessage');
+            div.textContent = mensagem;
+            div.style.display = 'block';
+            div.style.color = tipo === 'success' ? 'var(--verde)' : 'var(--vermelho)';
+            
+            setTimeout(() => {
+                div.style.display = 'none';
+            }, 5000);
+        }
+
+        // ========== SISTEMA DE FEEDBACK ==========
+        function configurarEstrelasAvaliacao() {
+            const stars = document.querySelectorAll('.star');
+            const ratingInput = document.getElementById('feedbackRating');
+            
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const rating = this.getAttribute('data-rating');
+                    ratingInput.value = rating;
+                    
+                    stars.forEach(s => s.classList.remove('active'));
+                    for (let i = 0; i < rating; i++) {
+                        stars[i].classList.add('active');
+                    }
+                });
+            });
+        }
+
+        function enviarFeedback(e) {
+            e.preventDefault();
+            
+            const feedback = {
+                nome: document.getElementById('feedbackNome').value,
+                email: document.getElementById('feedbackEmail').value,
+                rating: parseInt(document.getElementById('feedbackRating').value),
+                mensagem: document.getElementById('feedbackMensagem').value,
+                data: new Date().toISOString(),
+                curtidas: 0,
+                usuariosQueCurtiram: []
+            };
+
+            if (feedback.rating === 0) {
+                alert('Por favor, selecione uma avaliação com as estrelas!');
+                return;
+            }
+
+            const feedbacks = JSON.parse(localStorage.getItem('feedbacks') || '[]');
+            feedbacks.push(feedback);
+            localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+            
+            alert('Feedback enviado com sucesso! Obrigado por sua contribuição.');
+            document.getElementById('feedbackForm').reset();
+            
+            // Resetar estrelas
+            document.querySelectorAll('.star').forEach(star => star.classList.remove('active'));
+            document.getElementById('feedbackRating').value = '0';
+            
+            carregarFeedbacksPublicos();
+        }
+
+        function carregarFeedbacksPublicos() {
+            const feedbacks = JSON.parse(localStorage.getItem('feedbacks') || '[]');
+            const container = document.getElementById('listaFeedbacks');
+            
+            container.innerHTML = '';
+            
+            // Ordenar por data (mais recentes primeiro)
+            feedbacks.sort((a, b) => new Date(b.data) - new Date(a.data));
+            
+            feedbacks.forEach((feedback, index) => {
+                const feedbackDiv = document.createElement('div');
+                feedbackDiv.className = 'feedback-item';
+                
+                const estrelas = '★'.repeat(feedback.rating) + '☆'.repeat(5 - feedback.rating);
+                
+                feedbackDiv.innerHTML = `
+                    <div class="feedback-header">
+                        <div class="feedback-author">${feedback.nome}</div>
+                        <div class="feedback-date">${formatarData(feedback.data)}</div>
+                    </div>
+                    <div class="feedback-rating" title="${feedback.rating} estrelas">
+                        ${estrelas}
+                    </div>
+                    <div class="feedback-message">${feedback.mensagem}</div>
+                    <div class="feedback-actions">
+                        <button class="like-btn ${feedback.usuariosQueCurtiram.includes('public') ? 'liked' : ''}" 
+                                onclick="curtirFeedback(${index})">
+                            <i class="fas fa-heart"></i>
+                            <span class="like-count">${feedback.curtidas}</span>
+                        </button>
+                    </div>
+                `;
+                
+                container.appendChild(feedbackDiv);
+            });
+        }
+
+        function curtirFeedback(index) {
+            const feedbacks = JSON.parse(localStorage.getItem('feedbacks') || '[]');
+            const feedback = feedbacks[index];
+            
+            if (!feedback.usuariosQueCurtiram.includes('public')) {
+                feedback.curtidas++;
+                feedback.usuariosQueCurtiram.push('public');
+                localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+                carregarFeedbacksPublicos();
+            }
+        }
+
+        // ========== FUNÇÕES DO ADMINISTRADOR ==========
+        function carregarSolicitacoesCadastro() {
+            const solicitacoes = JSON.parse(localStorage.getItem('solicitacoesCadastro') || '[]');
+            const tbody = document.querySelector('#tabelaSolicitacoes tbody');
+            tbody.innerHTML = '';
+            
+            solicitacoes.filter(s => s.status === 'pendente').forEach((solicitacao, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${solicitacao.nome}</td>
+                    <td>${solicitacao.email}</td>
+                    <td>${solicitacao.usuario}</td>
+                    <td>${solicitacao.tipo}</td>
+                    <td>${formatarData(solicitacao.data)}</td>
+                    <td>
+                        <button class="action-btn approve-btn" onclick="aprovarCadastro(${index})">Aprovar</button>
+                        <button class="action-btn delete-btn" onclick="rejeitarCadastro(${index})">Rejeitar</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function aprovarCadastro(index) {
+            const solicitacoes = JSON.parse(localStorage.getItem('solicitacoesCadastro') || '[]');
+            const solicitacao = solicitacoes[index];
+            
+            if (solicitacao.tipo === 'aluno') {
+                const alunos = JSON.parse(localStorage.getItem('alunos') || '[]');
+                alunos.push({
+                    nome: solicitacao.nome,
+                    usuario: solicitacao.usuario,
+                    senha: solicitacao.senha,
+                    email: solicitacao.email,
+                    tipo: 'aluno',
+                    status: 'aprovado'
+                });
+                localStorage.setItem('alunos', JSON.stringify(alunos));
+            } else if (solicitacao.tipo === 'professor') {
+                const professores = JSON.parse(localStorage.getItem('professores') || '[]');
+                professores.push({
+                    nome: solicitacao.nome,
+                    usuario: solicitacao.usuario,
+                    senha: solicitacao.senha,
+                    email: solicitacao.email,
+                    tipo: 'professor',
+                    status: 'aprovado'
+                });
+                localStorage.setItem('professores', JSON.stringify(professores));
+            }
+            
+            solicitacoes[index].status = 'aprovado';
+            localStorage.setItem('solicitacoesCadastro', JSON.stringify(solicitacoes));
+            
+            carregarSolicitacoesCadastro();
+            atualizarDashboard();
+            alert('Cadastro aprovado com sucesso!');
+        }
+
+        function rejeitarCadastro(index) {
+            const solicitacoes = JSON.parse(localStorage.getItem('solicitacoesCadastro') || '[]');
+            solicitacoes[index].status = 'rejeitado';
+            localStorage.setItem('solicitacoesCadastro', JSON.stringify(solicitacoes));
+            
+            carregarSolicitacoesCadastro();
+            alert('Solicitação rejeitada.');
+        }
+
+        function carregarFeedbacksAdmin() {
+            const feedbacks = JSON.parse(localStorage.getItem('feedbacks') || '[]');
+            const tbody = document.querySelector('#tabelaFeedbacks tbody');
+            tbody.innerHTML = '';
+            
+            feedbacks.forEach(feedback => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${feedback.nome}</td>
+                    <td>${feedback.email}</td>
+                    <td>${'★'.repeat(feedback.rating)}</td>
+                    <td>${feedback.mensagem.substring(0, 50)}${feedback.mensagem.length > 50 ? '...' : ''}</td>
+                    <td>${formatarData(feedback.data)}</td>
+                    <td>${feedback.curtidas}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // ========== ATUALIZAÇÕES DAS FUNÇÕES EXISTENTES ==========
+        function abrirAbaAdmin(aba) {
+            document.querySelectorAll('.admin-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.admin-tab').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            document.getElementById(aba).classList.add('active');
+            event.target.classList.add('active');
+            
+            if (aba === 'alunos') carregarAlunos();
+            if (aba === 'notas') {
+                carregarSelectAlunos();
+                carregarNotas();
+            }
+            if (aba === 'chat') carregarChat();
+            if (aba === 'cadastros') carregarSolicitacoesCadastro();
+            if (aba === 'feedbacks') carregarFeedbacksAdmin();
+        }
+
+        function atualizarDashboard() {
+            const alunos = JSON.parse(localStorage.getItem('alunos') || '[]');
+            const professores = JSON.parse(localStorage.getItem('professores') || '[]');
+            const notas = JSON.parse(localStorage.getItem('notas') || '[]');
+            const solicitacoes = JSON.parse(localStorage.getItem('solicitacoesCadastro') || '[]');
+            const feedbacks = JSON.parse(localStorage.getItem('feedbacks') || '[]');
+            
+            document.getElementById('totalAlunos').textContent = alunos.length;
+            document.getElementById('totalProfessores').textContent = professores.length;
+            document.getElementById('solicitacoesPendentes').textContent = 
+                solicitacoes.filter(s => s.status === 'pendente').length;
+            document.getElementById('totalFeedbacks').textContent = feedbacks.length;
+            
+            if (notas.length > 0) {
+                const media = notas.reduce((sum, nota) => sum + nota.nota, 0) / notas.length;
+                document.getElementById('mediaGeral').textContent = media.toFixed(1);
+            } else {
+                document.getElementById('mediaGeral').textContent = '0';
+            }
+        }
+
+        // ========== FUNÇÕES AUXILIARES ==========
+        function formatarData(data) {
+            if (!data) return '';
+            const date = new Date(data);
+            return date.toLocaleDateString('pt-BR');
+        }
 
         // ========== CONTROLE DE TELAS ==========
         function mostrarSitePrincipal() {
@@ -1120,11 +1729,9 @@
             document.getElementById('sistemaLogin').style.display = 'none';
             document.getElementById('sistemaPrincipal').style.display = 'block';
 
-            // Atualizar informações do usuário
             document.getElementById('userName').textContent = usuario.nome;
             document.getElementById('userType').textContent = usuario.tipo.charAt(0).toUpperCase() + usuario.tipo.slice(1);
 
-            // Mostrar painel correto
             if (usuario.tipo === 'admin') {
                 document.getElementById('adminPanel').style.display = 'block';
                 document.getElementById('studentPanel').style.display = 'none';
@@ -1176,7 +1783,7 @@
             // Verificar alunos
             if (userType === 'aluno') {
                 const alunos = JSON.parse(localStorage.getItem('alunos') || '[]');
-                const aluno = alunos.find(a => a.usuario === username && a.senha === password);
+                const aluno = alunos.find(a => a.usuario === username && a.senha === password && a.status === 'aprovado');
                 
                 if (aluno) {
                     const usuario = {
@@ -1193,7 +1800,7 @@
             // Verificar professores
             if (userType === 'professor') {
                 const professores = JSON.parse(localStorage.getItem('professores') || '[]');
-                const professor = professores.find(p => p.usuario === username && p.senha === password);
+                const professor = professores.find(p => p.usuario === username && p.senha === password && p.status === 'aprovado');
                 
                 if (professor) {
                     const usuario = {
@@ -1207,36 +1814,10 @@
                 }
             }
             
-            alert('Usuário ou senha incorretos!');
+            alert('Usuário ou senha incorretos, ou cadastro ainda não aprovado!');
         });
 
-        // ========== SISTEMA ADMINISTRATIVO ==========
-        function abrirAbaAdmin(aba) {
-            // Esconder todas as abas
-            document.querySelectorAll('.admin-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Remover active de todos os botões
-            document.querySelectorAll('.admin-tab').forEach(button => {
-                button.classList.remove('active');
-            });
-            
-            // Mostrar aba selecionada
-            document.getElementById(aba).classList.add('active');
-            
-            // Adicionar active ao botão clicado
-            event.target.classList.add('active');
-            
-            // Carregar dados específicos
-            if (aba === 'alunos') carregarAlunos();
-            if (aba === 'notas') {
-                carregarSelectAlunos();
-                carregarNotas();
-            }
-            if (aba === 'chat') carregarChat();
-        }
-
+        // ========== FUNÇÕES EXISTENTES DO SISTEMA ==========
         function carregarDadosAdmin() {
             carregarAlunos();
             carregarSelectAlunos();
@@ -1245,7 +1826,7 @@
         }
 
         function carregarAlunos() {
-            const alunos = JSON.parse(localStorage.getItem('alunos')) || [];
+            const alunos = JSON.parse(localStorage.getItem('alunos') || '[]');
             const tbody = document.querySelector('#tabelaAlunos tbody');
             tbody.innerHTML = '';
             
@@ -1254,7 +1835,7 @@
                 row.innerHTML = `
                     <td>${aluno.nome}</td>
                     <td>${aluno.usuario}</td>
-                    <td>${aluno.cpf}</td>
+                    <td>${aluno.cpf || 'N/A'}</td>
                     <td>${formatarData(aluno.nascimento)}</td>
                     <td>
                         <button class="action-btn delete-btn" onclick="excluirAluno(${index})">Excluir</button>
@@ -1265,7 +1846,7 @@
         }
 
         function carregarSelectAlunos() {
-            const alunos = JSON.parse(localStorage.getItem('alunos')) || [];
+            const alunos = JSON.parse(localStorage.getItem('alunos') || '[]');
             const select = document.getElementById('selectAluno');
             select.innerHTML = '<option value="">Selecione um aluno</option>';
             
@@ -1278,11 +1859,11 @@
         }
 
         function carregarNotas() {
-            const notas = JSON.parse(localStorage.getItem('notas')) || [];
+            const notas = JSON.parse(localStorage.getItem('notas') || '[]');
             const tbody = document.querySelector('#tabelaNotas tbody');
             tbody.innerHTML = '';
             
-            const alunos = JSON.parse(localStorage.getItem('alunos')) || [];
+            const alunos = JSON.parse(localStorage.getItem('alunos') || []);
             
             notas.forEach((nota, index) => {
                 const aluno = alunos[nota.alunoIndex];
@@ -1314,7 +1895,7 @@
                 data: new Date().toISOString()
             };
             
-            const notas = JSON.parse(localStorage.getItem('notas')) || [];
+            const notas = JSON.parse(localStorage.getItem('notas') || '[]');
             notas.push(novaNota);
             localStorage.setItem('notas', JSON.stringify(notas));
             
@@ -1323,8 +1904,66 @@
             alert('Nota lançada com sucesso!');
         }
 
+        function formatarDisciplina(disciplina) {
+            const disciplinas = {
+                'teoria_musical': 'Teoria Musical',
+                'pratica_instrumental': 'Prática Instrumental',
+                'historia_musica': 'História da Música'
+            };
+            return disciplinas[disciplina] || disciplina;
+        }
+
+        function excluirAluno(index) {
+            if (confirm('Tem certeza que deseja excluir este aluno?')) {
+                const alunos = JSON.parse(localStorage.getItem('alunos') || '[]');
+                alunos.splice(index, 1);
+                localStorage.setItem('alunos', JSON.stringify(alunos));
+                carregarAlunos();
+                atualizarDashboard();
+            }
+        }
+
+        function carregarDadosAluno(usuario) {
+            const notas = JSON.parse(localStorage.getItem('notas') || '[]');
+            const alunos = JSON.parse(localStorage.getItem('alunos') || '[]');
+            const alunoIndex = alunos.findIndex(a => a.usuario === usuario.username);
+            
+            const alunoNotas = notas.filter(nota => nota.alunoIndex === alunoIndex);
+            
+            // Exibir notas
+            const notasContainer = document.getElementById('notasAluno');
+            if (alunoNotas.length > 0) {
+                let html = '<table><thead><tr><th>Disciplina</th><th>Nota</th><th>Data</th></tr></thead><tbody>';
+                alunoNotas.forEach(nota => {
+                    html += `<tr>
+                        <td>${formatarDisciplina(nota.disciplina)}</td>
+                        <td>${nota.nota}</td>
+                        <td>${formatarData(nota.data)}</td>
+                    </tr>`;
+                });
+                html += '</tbody></table>';
+                notasContainer.innerHTML = html;
+            } else {
+                notasContainer.innerHTML = '<p>Nenhuma nota lançada ainda.</p>';
+            }
+            
+            // Carregar aulas
+            const aulasContainer = document.getElementById('aulasAluno');
+            aulasContainer.innerHTML = `
+                <div class="grade-card">
+                    <h4>Teoria Musical</h4>
+                    <p>Introdução à leitura de partituras</p>
+                </div>
+                <div class="grade-card">
+                    <h4>Prática Instrumental</h4>
+                    <p>Exercícios de técnica</p>
+                </div>
+            `;
+        }
+
+        // Funções do chat (simplificadas para exemplo)
         function carregarChat() {
-            const alunos = JSON.parse(localStorage.getItem('alunos')) || [];
+            const alunos = JSON.parse(localStorage.getItem('alunos') || '[]');
             const listaUsuarios = document.getElementById('listaUsuariosChat');
             listaUsuarios.innerHTML = '<div class="chat-user active" data-user="admin">Administrador</div>';
             
@@ -1352,7 +1991,7 @@
         }
 
         function carregarMensagensChat() {
-            const mensagens = JSON.parse(localStorage.getItem('mensagens')) || [];
+            const mensagens = JSON.parse(localStorage.getItem('mensagens') || '[]');
             const chatMessages = document.getElementById('chatMessages');
             const usuarioSelecionado = localStorage.getItem('chatUsuarioSelecionado') || 'admin';
             
@@ -1393,93 +2032,12 @@
                 data: new Date().toISOString()
             };
             
-            const mensagens = JSON.parse(localStorage.getItem('mensagens')) || [];
+            const mensagens = JSON.parse(localStorage.getItem('mensagens') || '[]');
             mensagens.push(mensagem);
             localStorage.setItem('mensagens', JSON.stringify(mensagens));
             
             input.value = '';
             carregarMensagensChat();
-        }
-
-        function atualizarDashboard() {
-            const alunos = JSON.parse(localStorage.getItem('alunos')) || [];
-            const professores = JSON.parse(localStorage.getItem('professores')) || [];
-            const notas = JSON.parse(localStorage.getItem('notas')) || [];
-            
-            document.getElementById('totalAlunos').textContent = alunos.length;
-            document.getElementById('totalProfessores').textContent = professores.length;
-            
-            if (notas.length > 0) {
-                const media = notas.reduce((sum, nota) => sum + nota.nota, 0) / notas.length;
-                document.getElementById('mediaGeral').textContent = media.toFixed(1);
-            } else {
-                document.getElementById('mediaGeral').textContent = '0';
-            }
-        }
-
-        // ========== SISTEMA DO ALUNO ==========
-        function carregarDadosAluno(usuario) {
-            const notas = JSON.parse(localStorage.getItem('notas') || '[]');
-            const alunos = JSON.parse(localStorage.getItem('alunos') || '[]');
-            const alunoIndex = alunos.findIndex(a => a.usuario === usuario.username);
-            
-            const alunoNotas = notas.filter(nota => nota.alunoIndex === alunoIndex);
-            
-            // Exibir notas
-            const notasContainer = document.getElementById('notasAluno');
-            if (alunoNotas.length > 0) {
-                let html = '<table><thead><tr><th>Disciplina</th><th>Nota</th><th>Data</th></tr></thead><tbody>';
-                alunoNotas.forEach(nota => {
-                    html += `<tr>
-                        <td>${formatarDisciplina(nota.disciplina)}</td>
-                        <td>${nota.nota}</td>
-                        <td>${formatarData(nota.data)}</td>
-                    </tr>`;
-                });
-                html += '</tbody></table>';
-                notasContainer.innerHTML = html;
-            } else {
-                notasContainer.innerHTML = '<p>Nenhuma nota lançada ainda.</p>';
-            }
-            
-            // Carregar aulas
-            const aulasContainer = document.getElementById('aulasAluno');
-            aulasContainer.innerHTML = `
-                <div class="grade-card">
-                    <h4>Teoria Musical</h4>
-                    <p>Introdução à leitura de partituras</p>
-                </div>
-                <div class="grade-card">
-                    <h4>Prática Instrumental</h4>
-                    <p>Exercícios de técnica</p>
-                </div>
-            `;
-        }
-
-        // ========== FUNÇÕES AUXILIARES ==========
-        function formatarData(data) {
-            if (!data) return '';
-            const date = new Date(data);
-            return date.toLocaleDateString('pt-BR');
-        }
-
-        function formatarDisciplina(disciplina) {
-            const disciplinas = {
-                'teoria_musical': 'Teoria Musical',
-                'pratica_instrumental': 'Prática Instrumental',
-                'historia_musica': 'História da Música'
-            };
-            return disciplinas[disciplina] || disciplina;
-        }
-
-        function excluirAluno(index) {
-            if (confirm('Tem certeza que deseja excluir este aluno?')) {
-                const alunos = JSON.parse(localStorage.getItem('alunos')) || [];
-                alunos.splice(index, 1);
-                localStorage.setItem('alunos', JSON.stringify(alunos));
-                carregarAlunos();
-                atualizarDashboard();
-            }
         }
     </script>
 </body>
