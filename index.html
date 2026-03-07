@@ -1,119 +1,372 @@
-<!DOCTYPE html><html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lucrando com YouTube – Portas Abertas</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-body{
-  margin:0;
-  font-family:'Poppins', sans-serif;
-  background:#0f0f0f;
-  color:#ffffff;
-}
-section{
-  padding:80px 20px;
-  max-width:1100px;
-  margin:auto;
-}
-h1,h2,h3{
-  margin:0 0 20px;
-}
-.hero{
-  text-align:center;
-}
-.hero h1{
-  font-size:42px;
-  font-weight:800;
-}
-.hero p{
-  font-size:18px;
-  opacity:0.9;
-  max-width:700px;
-  margin:20px auto;
-}
-.btn{
-  display:inline-block;
-  padding:15px 35px;
-  background:#ff0000;
-  color:#fff;
-  font-weight:600;
-  text-decoration:none;
-  border-radius:40px;
-  margin-top:25px;
-  transition:0.3s;
-}
-.btn:hover{
-  background:#cc0000;
-}
-.box{
-  background:#1a1a1a;
-  padding:30px;
-  border-radius:20px;
-  margin-bottom:25px;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
-  gap:25px;
-}
-.author{
-  text-align:center;
-}
-.author img{
-  width:160px;
-  border-radius:50%;
-  margin-bottom:20px;
-}
-footer{
-  background:#000;
-  text-align:center;
-  padding:40px 20px;
-  font-size:14px;
-  opacity:0.7;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 Para Ilana – Mulher mais linda 🌹</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fbf7f0 0%, #f3e9de 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Georgia', 'Times New Roman', 'Didot', serif;
+            padding: 1.5rem;
+        }
+
+        .poster {
+            width: 800px;
+            max-width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 4;
+            background: #fffcf8;
+            border-radius: 28px;
+            box-shadow:
+                0 30px 50px -20px rgba(80, 40, 20, 0.4),
+                0 0 0 1px rgba(180, 120, 80, 0.25) inset,
+                0 0 0 2px #ffffffcc;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .poster::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="1" stitchTiles="stitch"/><feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.15 0"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.15"/></svg>');
+            background-repeat: repeat;
+            opacity: 0.1;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+            z-index: 15;
+        }
+
+        /* ESPAÇO PARA SUA FOTO DO BUQUÊ REAL */
+        /* Substitua o src pela URL da sua imagem */
+        .bouquet-real {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 30% 50%;
+            opacity: 0.85;
+            z-index: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 240, 230, 0.3) 0%, rgba(160, 80, 60, 0.25) 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 30;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            color: #2b1a12;
+            text-shadow: 0 2px 8px rgba(255, 240, 230, 0.9), 0 4px 12px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(2px);
+            background: linear-gradient(135deg, rgba(255, 245, 235, 0.4) 0%, rgba(250, 230, 215, 0.2) 100%);
+            border-radius: 28px;
+        }
+
+        .decor-line {
+            width: 180px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b38b70, #cfa287, #b38b70, transparent);
+            margin: 0.8rem 0 1.5rem 0;
+            box-shadow: 0 0 8px #ffefd5;
+        }
+
+        .decor-line.thin {
+            width: 300px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c7a286, #aa6d4e, #c7a286, transparent);
+            margin: 1.5rem 0 0.8rem 0;
+        }
+
+        h1 {
+            font-size: 4.2rem;
+            font-weight: 400;
+            letter-spacing: 6px;
+            color: #3a2016;
+            margin-bottom: 0.2rem;
+            font-family: 'Didot', 'Garamond', serif;
+            text-transform: uppercase;
+            border-bottom: 1px solid #d4ab92;
+            padding-bottom: 0.5rem;
+            line-height: 1.2;
+            background: linear-gradient(180deg, #4a2c1e, #6a3e2a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px #fbe9dd;
+        }
+
+        .sub {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #4d2e1f;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+            font-weight: 300;
+            text-shadow: 0 2px 8px #fff0e0;
+        }
+
+        .name {
+            font-size: 5rem;
+            font-weight: 600;
+            color: #6b1e1e;
+            text-shadow: 0 2px 15px #ffd9c0, 0 4px 20px rgba(190, 70, 30, 0.4);
+            margin: 0.5rem 0 0.2rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.1;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(135deg, #871c1c, #b1422a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .name::before,
+        .name::after {
+            content: "✧";
+            font-size: 2.5rem;
+            color: #b35e3a;
+            opacity: 0.9;
+            padding: 0 1rem;
+            font-weight: 100;
+            text-shadow: 0 0 15px #ffc8a2;
+            -webkit-text-fill-color: #b35e3a;
+        }
+
+        .caption {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: #4d2e1f;
+            margin: 0.8rem 0 0.2rem;
+            border-top: 1px dashed #dbb6a2;
+            padding-top: 1rem;
+            max-width: 550px;
+            font-weight: 500;
+            text-shadow: 0 1px 8px #ffeae0;
+        }
+
+        .message {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: #2b1a12;
+            margin: 1.2rem 0 0.5rem;
+            font-family: 'Georgia', serif;
+            background: rgba(250, 240, 230, 0.65);
+            padding: 1rem 2.2rem;
+            border-radius: 60px;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 6px 18px rgba(120, 50, 20, 0.25);
+            border: 1px solid #e8cfbf;
+            font-weight: 500;
+        }
+
+        .assinatura {
+            font-size: 1.5rem;
+            font-family: 'Brush Script MT', cursive;
+            color: #6a3326;
+            margin-top: 1.5rem;
+            letter-spacing: 1px;
+            border-top: 1px solid #e2c5b2;
+            padding-top: 0.8rem;
+            width: 70%;
+            text-shadow: 0 2px 8px #fff0e5;
+        }
+
+        .instagram-section {
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .instagram-label {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            color: #6a3e2c;
+            text-transform: uppercase;
+            font-family: 'Georgia', serif;
+            background: rgba(255, 245, 235, 0.6);
+            padding: 0.2rem 1.2rem;
+            border-radius: 30px;
+            backdrop-filter: blur(4px);
+        }
+
+        .instagram-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 245, 235, 0.8);
+            border: 2px solid #b45d3a;
+            border-radius: 60px;
+            padding: 0.9rem 2.5rem;
+            text-decoration: none;
+            color: #4a261a;
+            font-size: 1.6rem;
+            font-weight: 500;
+            font-family: 'Georgia', serif;
+            box-shadow: 0 8px 20px rgba(140, 60, 30, 0.35);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(6px);
+            letter-spacing: 1px;
+        }
+
+        .instagram-button:hover {
+            background: #fce9dd;
+            border-color: #a33f1a;
+            box-shadow: 0 12px 24px rgba(130, 50, 20, 0.4);
+            transform: scale(1.02);
+            color: #3b1f13;
+        }
+
+        .instagram-button svg {
+            width: 32px;
+            height: 32px;
+            filter: drop-shadow(0 2px 4px #b35e3a);
+        }
+
+        .instagram-note {
+            font-size: 0.95rem;
+            color: #5d3a28;
+            font-style: italic;
+            margin-top: 0.2rem;
+            background: rgba(255, 240, 230, 0.5);
+            padding: 0.2rem 1.2rem;
+            border-radius: 30px;
+            backdrop-filter: blur(4px);
+        }
+
+        .gold-dot {
+            width: 8px;
+            height: 8px;
+            background: #d79f6f;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 8px;
+            box-shadow: 0 0 15px #f1cfb5;
+        }
+
+        @media (max-width: 700px) {
+            .poster {
+                width: 95%;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .name {
+                font-size: 3.5rem;
+            }
+
+            .name::before,
+            .name::after {
+                font-size: 1.8rem;
+            }
+
+            .instagram-button {
+                font-size: 1.3rem;
+                padding: 0.7rem 1.8rem;
+            }
+        }
+
+        .vignette {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(120, 50, 30, 0.2) 90%);
+            pointer-events: none;
+            z-index: 40;
+            border-radius: 28px;
+        }
+    </style>
 </head>
-<body><section class="hero">
-  <h1>Lucrando com YouTube – Portas Abertas</h1>
-  <p>Descubra o método que grandes criadores utilizam para crescer rápido, gerar autoridade e transformar visualizações em lucro — sem depender de anúncios ou grandes produções.</p>
-  <a href="https://chat.whatsapp.com/JU43EFOyfzW6YTFXRXIcqh?mode=gi_t" class="btn">QUERO LUCRAR COM YOUTUBE</a>
-</section><section>
-  <h2>Crescer no YouTube é mais simples (e mais lucrativo) do que você imagina</h2>
-  <div class="box">
-    <p>Eu também achava que precisava começar cedo, ter equipamentos caros ou contar com sorte.</p>
-    <p>Postava vídeo atrás de vídeo… e nada. Sem views. Sem inscritos. Sem retorno.</p>
-    <p>Até entender como o algoritmo realmente distribui vídeos curtos e aplicar uma estratégia validada.</p>
-  </div>
-  <div class="box">
-    <p>Desenvolvi um método simples que gerou múltiplas viralizações consistentes — e outras pessoas aplicaram e também tiveram resultados.</p>
-  </div>
-  <a href="https://chat.whatsapp.com/JU43EFOyfzW6YTFXRXIcqh?mode=gi_t" class="btn">QUERO LUCRAR COM YOUTUBE</a>
-</section><section>
-  <h2>O que você vai aprender</h2>
-  <div class="grid">
-    <div class="box">
-      <h3>Estratégia de Shorts</h3>
-      <p>Como estruturar vídeos curtos que prendem atenção e geram alcance massivo.</p>
+
+<body>
+    <div class="poster">
+        <!-- SUA FOTO DO BUQUÊ REAL -->
+        <!-- COLE AQUI O LINK DA SUA IMAGEM NO src -->
+        <img class="bouquet-real" src="img/buque.jpeg" alt="Buquê de rosas vermelhas para Ilana" loading="lazy">
+
+        <!-- camada de overlay suave -->
+        <div class="overlay"></div>
+
+        <div class="content">
+            <h1>DIA DA MULHER</h1>
+            <div class="decor-line"></div>
+            <div class="sub">para a mais linda de todas</div>
+
+            <div class="name">ILANA</div>
+
+            <div class="decor-line thin"></div>
+
+            <div class="caption">
+                ✧ elegância • força • doçura ✧
+            </div>
+
+            <div class="message">
+                “Mulher de alta classe, dona de um olhar<br>
+                que cativa e de um coração que acolhe.<br>
+                Teu brilho ilumina qualquer ambiente.”
+            </div>
+
+            <div class="assinatura">
+                com admiração eterna <span class="gold-dot"></span> 💌
+            </div>
+
+            <div class="instagram-section">
+                <span class="instagram-label">✦ Assinado ✦</span>
+                <a href="https://instagram.com/vini_sants_008" target="_blank" class="instagram-button">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M17 2H7C4.23858 2 2 4.23858 2 7V17C2 19.7614 4.23858 22 7 22H17C19.7614 22 22 19.7614 22 17V7C22 4.23858 19.7614 2 17 2Z"
+                            stroke="#b1422a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M16 11.37C16.1234 12.2022 15.9813 13.0522 15.5938 13.799C15.2063 14.5458 14.5932 15.1514 13.8416 15.5297C13.0901 15.9079 12.2385 16.0396 11.4078 15.9059C10.5771 15.7722 9.80977 15.3801 9.21485 14.7852C8.61993 14.1902 8.22783 13.4229 8.0941 12.5922C7.96037 11.7615 8.09207 10.9099 8.47033 10.1584C8.84859 9.40685 9.45419 8.79374 10.201 8.40624C10.9478 8.01874 11.7978 7.87659 12.63 8C13.4789 8.12588 14.2648 8.52146 14.8717 9.12831C15.4785 9.73515 15.8741 10.5211 16 11.37Z"
+                            stroke="#b1422a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="17.5" cy="6.5" r="1.5" fill="#b1422a" />
+                    </svg>
+                    @vini_sants_008
+                    <span style="font-size:1.8rem;">🌹</span>
+                </a>
+                <span class="instagram-note">clique</span>
+            </div>
+
+            <div
+                style="margin-top: 0.5rem; display: flex; gap: 10px; color: #ad6b53; font-size: 1rem; letter-spacing: 3px;">
+                <span>🌸</span> <span>🌹</span> <span>🌷</span>
+            </div>
+        </div>
+
+        <div class="vignette"></div>
     </div>
-    <div class="box">
-      <h3>Posicionamento</h3>
-      <p>Como se tornar autoridade no seu nicho mesmo começando do zero.</p>
-    </div>
-    <div class="box">
-      <h3>Monetização</h3>
-      <p>Como transformar audiência em faturamento recorrente.</p>
-    </div>
-  </div>
-</section><section class="author">
-  <h2>Quem é Fernando Adriano?</h2>
-  <img src="IMG-20260302-WA0147.jpg" alt="Fernando Adriano">
-  <p>Criador do canal Bão que Chega. Especialista em vídeos curtos que geram audiência e faturamento. Transformou sua realidade com Shorts e hoje ensina pessoas comuns a fazerem o mesmo — sem complicação e sem precisar aparecer.</p>
-</section><section style="text-align:center;">
-  <h2>Entre agora para o grupo exclusivo</h2>
-  <p>Acesse o conteúdo prático e comece a aplicar ainda hoje.</p>
-  <a href="https://chat.whatsapp.com/JU43EFOyfzW6YTFXRXIcqh?mode=gi_t" class="btn">ENTRAR NO GRUPO AGORA</a>
-</section><footer>
-  © 2026 Lucrando com YouTube – Todos os direitos reservados.
-</footer></body>
+</body>
+
 </html>
