@@ -1,372 +1,437 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌸 Para Ilana – Mulher mais linda 🌹</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>Assistência Técnica • Pôster Profissional</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
         }
 
         body {
+            background-color: #0b0c0e;
+            background-image: radial-gradient(circle at 30% 40%, rgba(0, 255, 100, 0.03) 0%, transparent 40%);
             min-height: 100vh;
-            background: linear-gradient(145deg, #fbf7f0 0%, #f3e9de 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Georgia', 'Times New Roman', 'Didot', serif;
             padding: 1.5rem;
         }
 
+        /* cartaz/pôster principal */
         .poster {
-            width: 800px;
-            max-width: 100%;
-            height: auto;
-            aspect-ratio: 3 / 4;
-            background: #fffcf8;
-            border-radius: 28px;
-            box-shadow:
-                0 30px 50px -20px rgba(80, 40, 20, 0.4),
-                0 0 0 1px rgba(180, 120, 80, 0.25) inset,
-                0 0 0 2px #ffffffcc;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.2s ease;
-        }
-
-        .poster::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="1" stitchTiles="stitch"/><feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.15 0"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.15"/></svg>');
-            background-repeat: repeat;
-            opacity: 0.1;
-            pointer-events: none;
-            mix-blend-mode: multiply;
-            z-index: 15;
-        }
-
-        /* ESPAÇO PARA SUA FOTO DO BUQUÊ REAL */
-        /* Substitua o src pela URL da sua imagem */
-        .bouquet-real {
-            position: absolute;
-            top: 0;
-            left: 0;
+            max-width: 1200px;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: 30% 50%;
-            opacity: 0.85;
-            z-index: 1;
-            transition: opacity 0.3s ease;
+            background: #111315;  /* grafite escuro com leve quente */
+            background: linear-gradient(145deg, #0f1114 0%, #1a1d21 100%);
+            border-radius: 2.5rem;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.8), 0 0 0 1px rgba(255, 215, 0, 0.2) inset, 0 0 20px rgba(0, 255, 100, 0.2);
+            padding: 2.2rem 2rem;
+            transition: all 0.2s;
+            border: 1px solid rgba(255, 230, 0, 0.2);
         }
 
-        .overlay {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(255, 240, 230, 0.3) 0%, rgba(160, 80, 60, 0.25) 100%);
-            z-index: 2;
-            pointer-events: none;
+        /* cabeçalho com título principal */
+        .hero-title {
+            font-size: clamp(2rem, 8vw, 4.4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            background: linear-gradient(130deg, #f5f7fa 0%, #e0e4ec 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 5px rgba(0,255,150,0.3), 0 4px 15px rgba(0,0,0,0.8);
+            margin-bottom: 0.35rem;
         }
 
-        .content {
-            position: relative;
-            z-index: 30;
+        .hero-sub {
+            font-size: clamp(1.1rem, 4vw, 1.9rem);
+            font-weight: 500;
+            color: #ccd0d9;
+            letter-spacing: 0.5px;
+            border-left: 6px solid #bbff00;
+            padding-left: 1.3rem;
+            margin-top: 0.3rem;
+            margin-bottom: 2.2rem;
+            text-shadow: 0 2px 3px black;
+            background: linear-gradient(90deg, rgba(187,255,0,0.1) 0%, transparent 90%);
+        }
+
+        /* grid de serviços principal e informática */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2.2rem 0 2.8rem 0;
+        }
+
+        /* cards de cada serviço */
+        .service-card {
+            background: rgba(10, 12, 18, 0.8);
+            backdrop-filter: blur(3px);
+            border: 1px solid rgba(200, 255, 0, 0.25);
+            border-radius: 2rem;
+            padding: 1.4rem 1.3rem;
+            box-shadow: 0 18px 25px -12px rgba(0,0,0,0.7), 0 4px 0 0 rgba(187, 255, 0, 0.2) inset, 0 -1px 0 rgba(255,255,255,0.05) inset;
+            transition: transform 0.15s ease, box-shadow 0.25s;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 30px -12px black, 0 0 0 2px #ccff33 inset;
+            border-color: #ccff33;
+        }
+
+        /* ícone técnico (pseudo ou caractere) */
+        .service-icon {
+            background: #1e242c;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 1.2rem;
+            display: flex;
             align-items: center;
             justify-content: center;
-            height: 100%;
-            padding: 3rem 2.5rem;
-            text-align: center;
-            color: #2b1a12;
-            text-shadow: 0 2px 8px rgba(255, 240, 230, 0.9), 0 4px 12px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(2px);
-            background: linear-gradient(135deg, rgba(255, 245, 235, 0.4) 0%, rgba(250, 230, 215, 0.2) 100%);
-            border-radius: 28px;
-        }
-
-        .decor-line {
-            width: 180px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #b38b70, #cfa287, #b38b70, transparent);
-            margin: 0.8rem 0 1.5rem 0;
-            box-shadow: 0 0 8px #ffefd5;
-        }
-
-        .decor-line.thin {
-            width: 300px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #c7a286, #aa6d4e, #c7a286, transparent);
-            margin: 1.5rem 0 0.8rem 0;
-        }
-
-        h1 {
-            font-size: 4.2rem;
+            font-size: 2rem;
             font-weight: 400;
-            letter-spacing: 6px;
-            color: #3a2016;
-            margin-bottom: 0.2rem;
-            font-family: 'Didot', 'Garamond', serif;
-            text-transform: uppercase;
-            border-bottom: 1px solid #d4ab92;
-            padding-bottom: 0.5rem;
-            line-height: 1.2;
-            background: linear-gradient(180deg, #4a2c1e, #6a3e2a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 10px #fbe9dd;
+            color: #d4ff73;
+            text-shadow: 0 0 8px #aaff00;
+            border: 1px solid rgba(255,255,200,0.3);
+            box-shadow: 0 5px 0 #0b0e10;
+            background: linear-gradient(145deg, #232933, #151a21);
+            flex-shrink: 0;
         }
 
-        .sub {
-            font-size: 1.8rem;
-            font-style: italic;
-            color: #4d2e1f;
-            letter-spacing: 2px;
-            margin-top: 0.5rem;
-            font-weight: 300;
-            text-shadow: 0 2px 8px #fff0e0;
-        }
-
-        .name {
-            font-size: 5rem;
+        .service-text {
             font-weight: 600;
-            color: #6b1e1e;
-            text-shadow: 0 2px 15px #ffd9c0, 0 4px 20px rgba(190, 70, 30, 0.4);
-            margin: 0.5rem 0 0.2rem;
-            font-family: 'Times New Roman', serif;
-            line-height: 1.1;
+            font-size: 1.2rem;
+            line-height: 1.3;
+            color: #f0f3f8;
+            text-shadow: 0 1px 2px black;
+        }
+
+        .service-text small {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #b6c4d4;
+            display: block;
+        }
+
+        /* bloco de informática em destaque (maior) */
+        .tech-spotlight {
+            background: #0f141c;
+            border-radius: 2.2rem;
+            padding: 2rem 2.2rem;
+            margin: 2rem 0 2.5rem 0;
+            border: 2px solid #aaff33;
+            box-shadow: 0 25px 30px -15px black, 0 0 30px rgba(100,255,0,0.4);
+            background: linear-gradient(135deg, #1b212b 0%, #0d121b 100%);
             position: relative;
-            display: inline-block;
-            background: linear-gradient(135deg, #871c1c, #b1422a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
-        .name::before,
-        .name::after {
-            content: "✧";
-            font-size: 2.5rem;
-            color: #b35e3a;
-            opacity: 0.9;
-            padding: 0 1rem;
-            font-weight: 100;
-            text-shadow: 0 0 15px #ffc8a2;
-            -webkit-text-fill-color: #b35e3a;
-        }
-
-        .caption {
-            font-size: 1.6rem;
-            font-style: italic;
-            color: #4d2e1f;
-            margin: 0.8rem 0 0.2rem;
-            border-top: 1px dashed #dbb6a2;
-            padding-top: 1rem;
-            max-width: 550px;
-            font-weight: 500;
-            text-shadow: 0 1px 8px #ffeae0;
-        }
-
-        .message {
-            font-size: 1.3rem;
-            line-height: 1.6;
-            color: #2b1a12;
-            margin: 1.2rem 0 0.5rem;
-            font-family: 'Georgia', serif;
-            background: rgba(250, 240, 230, 0.65);
-            padding: 1rem 2.2rem;
+        .tech-spotlight::before {
+            content: "⚡ INFORMÁTICA ⚡";
+            position: absolute;
+            top: -15px;
+            left: 2rem;
+            background: #aaff33;
+            color: #0a0c10;
+            font-weight: 800;
+            padding: 0.3rem 1.8rem;
             border-radius: 60px;
-            backdrop-filter: blur(6px);
-            box-shadow: 0 6px 18px rgba(120, 50, 20, 0.25);
-            border: 1px solid #e8cfbf;
-            font-weight: 500;
-        }
-
-        .assinatura {
-            font-size: 1.5rem;
-            font-family: 'Brush Script MT', cursive;
-            color: #6a3326;
-            margin-top: 1.5rem;
-            letter-spacing: 1px;
-            border-top: 1px solid #e2c5b2;
-            padding-top: 0.8rem;
-            width: 70%;
-            text-shadow: 0 2px 8px #fff0e5;
-        }
-
-        .instagram-section {
-            margin-top: 1.2rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .instagram-label {
             font-size: 1rem;
             letter-spacing: 2px;
-            color: #6a3e2c;
+            box-shadow: 0 8px 0 #3f5100;
             text-transform: uppercase;
-            font-family: 'Georgia', serif;
-            background: rgba(255, 245, 235, 0.6);
-            padding: 0.2rem 1.2rem;
-            border-radius: 30px;
-            backdrop-filter: blur(4px);
         }
 
-        .instagram-button {
+        .tech-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #ccff99;
+            text-shadow: 0 3px 0 #2c4a00, 0 5px 15px black;
+            margin: 0.5rem 0 1.5rem 0;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .tech-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem 3rem;
+            margin-top: 1.2rem;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.7rem 1.8rem 0.7rem 1rem;
+            border-radius: 3rem;
+            border: 1px solid #72b000;
+            box-shadow: 0 5px 0 #0f1a00;
+        }
+
+        .tech-item .service-icon {
+            width: 2.8rem;
+            height: 2.8rem;
+            font-size: 1.5rem;
+            border-radius: 50%;
+        }
+
+        .tech-item span {
+            font-weight: 600;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* área de contato em destaque */
+        .contact-block {
+            background: #0c0f14;
+            border-radius: 2.5rem;
+            padding: 1.8rem 2.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            border: 1px solid #aaff33;
+            box-shadow: 0 25px 30px -15px black, 0 0 20px rgba(170,255,0,0.3);
+            margin-top: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-phone {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 800;
+            background: linear-gradient(130deg, #ffffcc, #bbff77);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-phone::before {
+            content: "📞";
+            font-size: 2.2rem;
+            filter: drop-shadow(0 2px 3px black);
+            -webkit-text-fill-color: initial;
+            color: #b0ff5f;
+        }
+
+        .attendant {
+            font-size: 1.3rem;
+            color: #d9e2f0;
+            margin-top: 0.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .attendant::before {
+            content: "🛠️";
+            font-size: 1.6rem;
+            opacity: 0.9;
+        }
+
+        /* botão whatsapp - AGORA É UM LINK FUNCIONAL */
+        .whatsapp-btn {
+            background: #1f2b1f;
+            border: 2px solid #44ff88;
+            padding: 1.2rem 2.5rem;
+            border-radius: 3rem;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background: rgba(255, 245, 235, 0.8);
-            border: 2px solid #b45d3a;
-            border-radius: 60px;
-            padding: 0.9rem 2.5rem;
-            text-decoration: none;
-            color: #4a261a;
+            gap: 1rem;
+            font-weight: 700;
             font-size: 1.6rem;
-            font-weight: 500;
-            font-family: 'Georgia', serif;
-            box-shadow: 0 8px 20px rgba(140, 60, 30, 0.35);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(6px);
-            letter-spacing: 1px;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 15px 20px -10px black, 0 0 0 2px #00dd66 inset, 0 0 15px #88ff88;
+            transition: 0.1s linear;
+            background: linear-gradient(145deg, #17331f, #102114);
+            cursor: pointer;
         }
 
-        .instagram-button:hover {
-            background: #fce9dd;
-            border-color: #a33f1a;
-            box-shadow: 0 12px 24px rgba(130, 50, 20, 0.4);
+        .whatsapp-btn span {
+            font-size: 2.2rem;
+            filter: drop-shadow(0 0 5px #99ff99);
+        }
+
+        .whatsapp-btn:hover {
+            background: #1f421f;
+            border-color: #aaffaa;
+            box-shadow: 0 10px 25px -5px #00ff80, 0 0 0 3px #bbffbb inset;
             transform: scale(1.02);
-            color: #3b1f13;
         }
 
-        .instagram-button svg {
-            width: 32px;
-            height: 32px;
-            filter: drop-shadow(0 2px 4px #b35e3a);
+        /* linha de separação com detalhe neon */
+        .divider-neon {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #bbff33, #ffff77, #bbff33, transparent);
+            width: 100%;
+            margin: 2rem 0 1rem 0;
+            opacity: 0.5;
         }
 
-        .instagram-note {
-            font-size: 0.95rem;
-            color: #5d3a28;
-            font-style: italic;
-            margin-top: 0.2rem;
-            background: rgba(255, 240, 230, 0.5);
-            padding: 0.2rem 1.2rem;
-            border-radius: 30px;
-            backdrop-filter: blur(4px);
-        }
-
-        .gold-dot {
-            width: 8px;
-            height: 8px;
-            background: #d79f6f;
-            border-radius: 50%;
-            display: inline-block;
-            margin: 0 8px;
-            box-shadow: 0 0 15px #f1cfb5;
-        }
-
-        @media (max-width: 700px) {
+        /* responsividade extra */
+        @media (max-width: 650px) {
             .poster {
-                width: 95%;
+                padding: 1.5rem 1.2rem;
+                border-radius: 2rem;
             }
-
-            h1 {
-                font-size: 2.8rem;
+            .service-card {
+                padding: 1rem;
             }
-
-            .name {
-                font-size: 3.5rem;
+            .tech-spotlight {
+                padding: 1.8rem 1.2rem;
             }
-
-            .name::before,
-            .name::after {
-                font-size: 1.8rem;
+            .tech-title {
+                font-size: 2rem;
             }
-
-            .instagram-button {
-                font-size: 1.3rem;
-                padding: 0.7rem 1.8rem;
+            .tech-items {
+                gap: 1rem;
+            }
+            .tech-item {
+                width: 100%;
+            }
+            .contact-block {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .whatsapp-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .hero-sub {
+                border-left-width: 4px;
+                padding-left: 0.8rem;
             }
         }
 
-        .vignette {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(120, 50, 30, 0.2) 90%);
-            pointer-events: none;
-            z-index: 40;
-            border-radius: 28px;
+        @media (max-width: 380px) {
+            .service-icon {
+                width: 2.8rem;
+                height: 2.8rem;
+                font-size: 1.5rem;
+            }
+            .service-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* lista de serviços com ícones customizados */
+        .service-card:nth-child(1) .service-icon:before { content: "🧺"; }  /* maq lavar */
+        .service-card:nth-child(2) .service-icon:before { content: "🫧"; }  /* tanquinho */
+        .service-card:nth-child(3) .service-icon:before { content: "🥤"; }  /* liquidificador */
+        .service-card:nth-child(4) .service-icon:before { content: "🍲"; }  /* panela */
+        .service-card:nth-child(5) .service-icon:before { content: "✂️"; }  /* alicate unha */
+        .service-card:nth-child(6) .service-icon:before { content: "⚡"; }  /* chapinha */
+        .service-card:nth-child(7) .service-icon:before { content: "💨"; }  /* secador */
+
+        /* para não mostrar texto cru nos ícones, usamos before */
+        .service-icon {
+            font-size: 0; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .service-icon:before {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        /* responsividade: mantém os ícones */
+        @media (max-width: 480px) {
+            .service-icon:before { font-size: 1.8rem; }
+        }
+        .tech-item .service-icon:before { font-size: 1.5rem; }
+
+        /* ajustes finos */
+        .footer-note {
+            color: #4a5555;
+            text-align: center;
+            margin-top: 1.8rem;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            border-top: 1px dashed #2f3a2f;
+            padding-top: 1rem;
         }
     </style>
 </head>
-
 <body>
     <div class="poster">
-        <!-- SUA FOTO DO BUQUÊ REAL -->
-        <!-- COLE AQUI O LINK DA SUA IMAGEM NO src -->
-        <img class="bouquet-real" src="img/buque.jpeg" alt="Buquê de rosas vermelhas para Ilana" loading="lazy">
+        <!-- título principal -->
+        <div class="hero-title">ASSISTÊNCIA TÉCNICA<br>ESPECIALIZADA</div>
+        <div class="hero-sub">Consertos e Manutenção de Equipamentos Domésticos</div>
 
-        <!-- camada de overlay suave -->
-        <div class="overlay"></div>
+        <!-- lista de serviços (ícones modernos) -->
+        <div class="services-grid">
+            <!-- 7 cards conforme lista -->
+            <div class="service-card"><div class="service-icon"></div><div class="service-text">Manutenção de Máquinas de Lavar</div></div>
+            <div class="service-card"><div class="service-icon"></div><div class="service-text">Conserto de Tanquinho</div></div>
+            <div class="service-card"><div class="service-icon"></div><div class="service-text">Conserto de Liquidificador</div></div>
+            <div class="service-card"><div class="service-icon"></div><div class="service-text">Manutenção de Panela de Pressão</div></div>
+            <div class="service-card"><div class="service-icon"></div><div class="service-text">Amolação de Alicate de Unha</div></div>
+            <div class="service-card"><div class="service-icon"></div><div class="service-text">Conserto de Chapinha de Cabelo</div></div>
+            <div class="service-card"><div class="service-icon"></div><div class="service-text">Conserto de Secador de Cabelo</div></div>
+        </div>
 
-        <div class="content">
-            <h1>DIA DA MULHER</h1>
-            <div class="decor-line"></div>
-            <div class="sub">para a mais linda de todas</div>
+        <!-- divisor neon -->
+        <div class="divider-neon"></div>
 
-            <div class="name">ILANA</div>
-
-            <div class="decor-line thin"></div>
-
-            <div class="caption">
-                ✧ elegância • força • doçura ✧
-            </div>
-
-            <div class="message">
-                “Mulher de alta classe, dona de um olhar<br>
-                que cativa e de um coração que acolhe.<br>
-                Teu brilho ilumina qualquer ambiente.”
-            </div>
-
-            <div class="assinatura">
-                com admiração eterna <span class="gold-dot"></span> 💌
-            </div>
-
-            <div class="instagram-section">
-                <span class="instagram-label">✦ Assinado ✦</span>
-                <a href="https://instagram.com/vini_sants_008" target="_blank" class="instagram-button">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M17 2H7C4.23858 2 2 4.23858 2 7V17C2 19.7614 4.23858 22 7 22H17C19.7614 22 22 19.7614 22 17V7C22 4.23858 19.7614 2 17 2Z"
-                            stroke="#b1422a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                        <path
-                            d="M16 11.37C16.1234 12.2022 15.9813 13.0522 15.5938 13.799C15.2063 14.5458 14.5932 15.1514 13.8416 15.5297C13.0901 15.9079 12.2385 16.0396 11.4078 15.9059C10.5771 15.7722 9.80977 15.3801 9.21485 14.7852C8.61993 14.1902 8.22783 13.4229 8.0941 12.5922C7.96037 11.7615 8.09207 10.9099 8.47033 10.1584C8.84859 9.40685 9.45419 8.79374 10.201 8.40624C10.9478 8.01874 11.7978 7.87659 12.63 8C13.4789 8.12588 14.2648 8.52146 14.8717 9.12831C15.4785 9.73515 15.8741 10.5211 16 11.37Z"
-                            stroke="#b1422a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="17.5" cy="6.5" r="1.5" fill="#b1422a" />
-                    </svg>
-                    @vini_sants_008
-                    <span style="font-size:1.8rem;">🌹</span>
-                </a>
-                <span class="instagram-note">clique</span>
-            </div>
-
-            <div
-                style="margin-top: 0.5rem; display: flex; gap: 10px; color: #ad6b53; font-size: 1rem; letter-spacing: 3px;">
-                <span>🌸</span> <span>🌹</span> <span>🌷</span>
+        <!-- seção em destaque informática -->
+        <div class="tech-spotlight">
+            <div class="tech-title">💻 FORMATAÇÃO DE NOTEBOOK E PC</div>
+            <div class="tech-items">
+                <div class="tech-item"><div class="service-icon"></div><span>Instalação de programas</span></div>
+                <div class="tech-item"><div class="service-icon"></div><span>Otimização do sistema</span></div>
+                <div class="tech-item"><div class="service-icon"></div><span>Limpeza de vírus</span></div>
             </div>
         </div>
 
-        <div class="vignette"></div>
+        <!-- área de contato destacada com botão whatsapp FUNCIONAL -->
+        <div class="contact-block">
+            <div class="contact-info">
+                <div class="contact-phone">(38) 99924-6249</div>
+                <div class="attendant">Atendente: Marcos</div>
+            </div>
+            <!-- BOTÃO WHATSAPP AGORA É UM LINK QUE ABRE O APP -->
+            <a href="https://wa.me/5538999246249?text=Olá!%20Vi%20seu%20anúncio%20e%20preciso%20de%20assistência%20técnica." 
+               class="whatsapp-btn" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                <span>📱</span> WHATSAPP
+            </a>
+        </div>
+
+        <!-- linha decorativa sutil -->
+        <div class="footer-note">⚙️ ORÇAMENTO SEM COMPROMISSO • ATENDIMENTO RÁPIDO ⚙️</div>
+
+        <!-- ajuste de ícones da parte de informática (tech-item) com ícones diferentes para não repetir muito -->
+        <style>
+            /* customização de ícones para cada item de informática */
+            .tech-spotlight .tech-item:nth-child(1) .service-icon:before { content: "📦"; }  /* instalação */
+            .tech-spotlight .tech-item:nth-child(2) .service-icon:before { content: "⚙️"; }  /* otimização */
+            .tech-spotlight .tech-item:nth-child(3) .service-icon:before { content: "🛡️"; }  /* limpeza vírus */
+            /* os ícones principais já estão mapeados pelos primeiros filhos .service-card nth-child */
+        </style>
     </div>
 </body>
-
 </html>
