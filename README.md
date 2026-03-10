@@ -1,99 +1,105 @@
+# 🚀 Lucrando com YouTube – Portas Abertas
 
+Landing page criada para apresentar o método **Lucrando com YouTube**, direcionando visitantes para um grupo exclusivo onde é apresentado o processo para crescer no YouTube utilizando vídeos curtos.
 
----
+## 📌 Objetivo
 
-# 🎶 Espaço Musical Harmônico
+Este site foi desenvolvido para:
 
-**Música é para todos!**
+* Apresentar o método de crescimento no YouTube
+* Mostrar uma breve apresentação em vídeo
+* Direcionar visitantes para o grupo exclusivo
+* Converter visitantes em membros da comunidade
 
-Bem-vindo ao repositório oficial da **Espaço Musical Harmônico**, uma empresa inovadora dedicada a transformar vidas através do poder da música. Combinamos educação musical de qualidade, musicoterapia e a venda de instrumentos para promover bem-estar, realização pessoal e desenvolvimento artístico.
+## 🌐 Acesso ao Grupo
 
----
+Entre diretamente pelo link:
 
-## 🎯 Sobre Nós
+https://redirecionazap.com/r/38998742550
 
-O **Espaço Musical Harmônico** nasceu da crença de que a música é um direito de todos. Somos uma empresa comprometida em oferecer uma educação musical acessível e de alta qualidade, integrada a serviços especializados de musicoterapia e a venda de instrumentos musicais confiáveis.
+## 🎥 Conteúdo da Página
 
-Nossa missão é inspirar e apoiar indivíduos em todas as fases da vida, utilizando a música como uma ferramenta para o desenvolvimento cognitivo, emocional e social.
+A landing page possui:
 
----
+* Seção de apresentação do método
+* Vídeo explicativo
+* Apresentação do criador
+* Botões de chamada para ação (CTA)
+* Link direto para o grupo
 
-## 🧭 Nossa Visão
+## 📁 Estrutura do Projeto
 
-Ser **referência nacional** em educação musical, musicoterapia e na oferta de instrumentos de alta qualidade, reconhecida por transformar vidas e promover o bem-estar através da música.
+```
+site
+│
+├── index.html
+├── imagens
+│   └── fernando.jpg
+│
+└── videos
+    └── apresentacao.mp4
+```
 
----
+## 📷 Imagens
 
-## 🎹 Nossos Serviços
+As imagens utilizadas ficam dentro da pasta:
 
-- **🎼 Aulas de Música**
-  - Para todas as idades e níveis de habilidade (iniciante, intermediário e avançado).
-  - Ensino personalizado e focado no interesse do aluno.
+```
+/imagens
+```
 
-- **🧠 Musicoterapia**
-  - Atendimentos individuais e em grupo para promover saúde emocional e mental.
-  - Utilizamos a música como ferramenta terapêutica para o autoconhecimento e o equilíbrio.
+Exemplo:
 
-- **🛒 Venda de Instrumentos Musicais**
-  - Instrumentos de cordas, sopro, teclas e percussão.
-  - Produtos de alta qualidade para músicos amadores e profissionais.
+```
+imagens/fernando.jpg
+```
 
----
+## 🎬 Vídeo
 
-## 💡 Valores
+O vídeo de apresentação está na pasta:
 
-- **Excelência:** Buscamos a qualidade em todos os serviços e produtos oferecidos.
-- **Inovação:** Incorporamos criatividade e novas abordagens em nossas metodologias.
-- **Empatia:** Oferecemos atendimento humanizado e focado no bem-estar de cada cliente.
-- **Paixão pela Música:** Acreditamos no poder transformador da música.
-- **Integridade:** Agimos com transparência, ética e respeito em todos os relacionamentos.
+```
+/videos
+```
 
----
+Arquivo utilizado:
 
-## 👨‍💼 Fundador
+```
+apresentacao.mp4
+```
 
-**Marcos Oliv**  
-*CEO Fundador*
+## 🚀 Publicação
 
----
+O site pode ser publicado facilmente utilizando **GitHub Pages**.
 
-## 📞 Contato
+Passos:
 
-Entre em contato conosco e faça parte do nosso mundo musical!
+1. Ir em **Settings** no repositório
+2. Abrir **Pages**
+3. Selecionar:
 
-- **Telefone/WhatsApp:** (38) 99833-5570 (Vivo)
-- **E-mail:** [musicharmonic2024@hotlook.com](mailto:musicharmonic2024@hotlook.com)
-- **Site:** [www.espacomusicalharmonico.com](http://www.espacomusicalharmonico.com) (*verificar a URL correta*)
-- **Endereço:** Rua Bocaíuva, nº 385 – Centro, Montes Claros – MG
+```
+Deploy from branch
+```
 
----
+4. Escolher:
 
-## 🚀 Tecnologias & Projetos
+```
+main / root
+```
 
-*Aqui no GitHub, você encontrará projetos relacionados a:*
-- Sistemas de gestão para escolas de música.
-- Ferramentas interativas para educação musical.
-- Aplicações em suporte à musicoterapia.
-- E muito mais em desenvolvimento!
+Depois disso o site ficará disponível em:
 
-Fique à vontade para explorar, contribuir e entrar em contato se alguma ideia ressoar com você!
+```
+https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO
+```
 
----
+## 👤 Autor
 
-**“A música pode mudar o mundo porque pode mudar as pessoas.” – Bono Vox**
+Fernando Adriano
+Criador do canal **Bão que Chega**
+Especialista em vídeos curtos que geram audiência e faturamento.
 
----
+## 📄 Licença
 
-### 📄 Licença
-
-Este projeto e todos os repositórios sob a organização **Espaço Musical Harmônico** estão sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-### ⭐ Agradecimentos
-
-Agradecemos a todos os alunos, clientes, colaboradores e à comunidade que acredita no poder da música e no nosso trabalho.
-
----
-
-**✨ Transforme sua vida através da música. Junte-se a nós!**
+Projeto desenvolvido para fins educacionais e de divulgação do método.
