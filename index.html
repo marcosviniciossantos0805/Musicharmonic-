@@ -4,23 +4,66 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lucrando com YouTube – Portas Abertas</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '396632924690208');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=396632924690208&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
 <style>
-body{margin:0;font-family:'Poppins',sans-serif;background:#0f0f0f;color:#fff}
+/* RESET E TIPOGRAFIA */
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:#0f0f0f;color:#fff;line-height:1.6}
 section{padding:80px 20px;max-width:1100px;margin:auto}
-h1,h2,h3{margin:0 0 20px}
-.hero{text-align:center}
-.hero h1{font-size:42px;font-weight:800}
-.hero p{font-size:18px;opacity:.9;max-width:700px;margin:20px auto}
-.btn{display:inline-block;padding:15px 35px;background:#ff0000;color:#fff;font-weight:600;text-decoration:none;border-radius:40px;margin-top:25px;transition:.3s}
-.btn:hover{background:#cc0000}
-.box{background:#1a1a1a;padding:30px;border-radius:20px;margin-bottom:25px}
+h1,h2,h3{margin-bottom:20px;font-weight:700}
+p{opacity:0.9}
+a{text-decoration:none}
+
+/* HERO */
+.hero{text-align:center;padding:100px 20px;background:linear-gradient(135deg,#0f0f0f,#111);}
+.hero h1{font-size:48px;line-height:1.2;color:#ff0000;}
+.hero p{font-size:20px;max-width:700px;margin:20px auto;color:#ddd;}
+.btn{display:inline-block;padding:15px 35px;background:#ff0000;color:#fff;font-weight:600;text-transform:uppercase;border-radius:50px;margin-top:25px;transition:.3s;box-shadow:0 5px 15px rgba(0,0,0,0.3);}
+.btn:hover{background:#cc0000;transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,0.4);}
+
+/* BOXES */
+.box{background:#1b1b1b;padding:30px;border-radius:20px;margin-bottom:25px;transition:transform .3s, box-shadow .3s;box-shadow:0 5px 15px rgba(0,0,0,0.3);}
+.box:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.5);}
+
+/* GRID */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
-.author{text-align:center}
-.author img{width:180px;border-radius:50%;margin-bottom:20px}
-.video{max-width:800px;margin:40px auto}
-video{width:100%;border-radius:20px}
-footer{background:#000;text-align:center;padding:40px 20px;font-size:14px;opacity:.7}
+
+/* VIDEO */
+.video{max-width:800px;margin:40px auto;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.4)}
+video{width:100%;display:block;border-radius:20px}
+
+/* AUTHOR */
+.author{text-align:center;margin-top:60px}
+.author img{width:180px;border-radius:50%;margin-bottom:20px;border:3px solid #ff0000}
+
+/* FOOTER */
+footer{background:#000;text-align:center;padding:40px 20px;font-size:14px;opacity:.8;margin-top:60px}
+
+/* RESPONSIVO */
+@media(max-width:800px){
+  .hero h1{font-size:36px}
+  .hero p{font-size:16px}
+  section{padding:60px 15px}
+}
 </style>
 </head>
 <body>
@@ -33,18 +76,14 @@ footer{background:#000;text-align:center;padding:40px 20px;font-size:14px;opacit
 
 <section class="video">
 <h2 style="text-align:center">Assista a apresentação</h2>
-
-<!-- COLOQUE O VÍDEO NA PASTA videos -->
 <video controls>
 <source src="WhatsApp Video 2026-03-04 at 23.12.58.mp4" type="video/mp4">
 Seu navegador não suporta vídeo.
 </video>
-
 </section>
 
 <section>
 <h2>Crescer no YouTube é mais simples do que parece</h2>
-
 <div class="box">
 <p>Eu também achava que precisava começar cedo, ter equipamentos caros ou simplesmente ter sorte.</p>
 <p>Postava vídeo atrás de vídeo… e nada. Sem views. Sem inscritos. Sem retorno.</p>
@@ -56,41 +95,30 @@ Seu navegador não suporta vídeo.
 </div>
 
 <a href="https://redirecionazap.com/r/38998742550" class="btn">QUERO LUCRAR COM YOUTUBE</a>
-
 </section>
 
 <section>
 <h2>O que você vai aprender</h2>
-
 <div class="grid">
-
 <div class="box">
 <h3>Estratégia de Shorts</h3>
 <p>Como criar vídeos curtos que prendem atenção e fazem o algoritmo entregar.</p>
 </div>
-
 <div class="box">
 <h3>Autoridade</h3>
 <p>Como crescer no YouTube mesmo começando do zero.</p>
 </div>
-
 <div class="box">
 <h3>Monetização</h3>
 <p>Como transformar visualizações em dinheiro.</p>
 </div>
-
 </div>
 </section>
 
 <section class="author">
-
 <h2>Quem é Fernando Adriano?</h2>
-
-<!-- COLOQUE A FOTO NA PASTA imagens -->
 <img src="WhatsApp Image 2026-03-04 at 23.14.33.jpeg" alt="Fernando Adriano">
-
 <p>Criador do canal Bão que Chega. Especialista em vídeos curtos que geram audiência e faturamento. Hoje ensina pessoas comuns a crescerem no YouTube sem complicação e sem precisar aparecer.</p>
-
 </section>
 
 <section style="text-align:center">
