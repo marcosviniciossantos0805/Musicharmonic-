@@ -16,8 +16,13 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '396632924690208');
+fbq('init', '396632924690208'); // Seu Pixel ID
 fbq('track', 'PageView');
+
+// Função para rastrear cliques nos botões
+function trackButtonClick(eventName) {
+    fbq('trackCustom', eventName);
+}
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=396632924690208&ev=PageView&noscript=1"
@@ -71,7 +76,7 @@ footer{background:#000;text-align:center;padding:40px 20px;font-size:14px;opacit
 <section class="hero">
 <h1>Lucrando com YouTube – Portas Abertas</h1>
 <p>Descubra o método que criadores utilizam para crescer rápido, gerar autoridade e transformar visualizações em lucro sem depender de anúncios ou grandes produções.</p>
-<a href="https://redirecionazap.com/r/38998742550" class="btn">QUERO LUCRAR COM YOUTUBE</a>
+<a href="https://redirecionazap.com/r/38998742550" class="btn" onclick="trackButtonClick('Click_QueroLucrar')">QUERO LUCRAR COM YOUTUBE</a>
 </section>
 
 <section class="video">
@@ -94,7 +99,7 @@ Seu navegador não suporta vídeo.
 <p>Depois disso desenvolvi um método simples que gerou múltiplas viralizações de forma consistente — e outras pessoas aplicaram e também tiveram resultados.</p>
 </div>
 
-<a href="https://redirecionazap.com/r/38998742550" class="btn">QUERO LUCRAR COM YOUTUBE</a>
+<a href="https://redirecionazap.com/r/38998742550" class="btn" onclick="trackButtonClick('Click_QueroLucrar')">QUERO LUCRAR COM YOUTUBE</a>
 </section>
 
 <section>
@@ -124,7 +129,7 @@ Seu navegador não suporta vídeo.
 <section style="text-align:center">
 <h2>Entre agora no grupo</h2>
 <p>Receba o método completo e comece a aplicar ainda hoje.</p>
-<a href="https://redirecionazap.com/r/38998742550" class="btn">ENTRAR NO GRUPO</a>
+<a href="https://redirecionazap.com/r/38998742550" class="btn" onclick="trackButtonClick('Click_EntrarGrupo')">ENTRAR NO GRUPO</a>
 </section>
 
 <footer>
